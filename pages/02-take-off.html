@@ -8,14 +8,14 @@
     <title>Take-off</title>
   </head>
   <body>
-    <header class="header">Empty header</header>
+    <header class="header">Piper PA-44-180 Seminole Performance Tool</header>
     <div class="app-wrapper">
       <nav class="navigation-bar">
         <a href="#" class="link">General</a>
-        <a href="take-off.html" class="link">Take-off</a>
+        <a href="02-take-off.html" class="link">Take-off</a>
         <a href="#" class="link">Gradients</a>
         <a href="#" class="link">Cruise</a>
-        <a href="#" class="link">Landing</a>
+        <a href="05-landing.html" class="link">Landing</a>
         <a href="#" class="link">Fuel</a>
         <a href="#" class="link">Mass</a>
       </nav>
@@ -25,6 +25,7 @@
             <span class="box-title-shape">Runway Parameters</span>
             <span class="box-title">Runway Parameters</span>
             <div class="box-content">
+
               <div class="input-group tora">
                 <label for="tora">TORA</label>
                 <div class="input-with-unit">
@@ -54,7 +55,7 @@
 
               <div class="input-group slope">
                 <label for="slope">Slope</label>
-                <div class="input-with-unit">
+                <div class="input-with-unit-slope">
                   <input id="slope" />
                   <span class="unit">%</span>
                 </div>
@@ -65,13 +66,14 @@
                 <label for="contamination">Contamination</label>
                 <div class="input-with-unit">
                   <select id="contamination">
-                    <option>Wet</option>
                     <option>Dry</option>
+                    <option>Wet</option>
                     <option>Dry, grass</option>
                     <option>Wet, grass</option>
                   </select>
                 </div>
               </div>
+
             </div>
           </div>
 
@@ -82,14 +84,111 @@
               <div class="input-group oat">
                 <label for="oat">OAT</label>
                 <select id="oat">
-                  <option>8</option>
+                    <option value="none" selected disabled hidden>°C</option>
+                    <option>40</option>
+                    <option>39</option>
+                    <option>38</option>
+                    <option>37</option>
+                    <option>36</option>
+                    <option>35</option>
+                    <option>34</option>
+                    <option>33</option>
+                    <option>32</option>
+                    <option>31</option>
+                    <option>30</option>
+                    <option>29</option>
+                    <option>28</option>
+                    <option>27</option>
+                    <option>26</option>
+                    <option>25</option>
+                    <option>24</option>
+                    <option>23</option>
+                    <option>22</option>
+                    <option>21</option>
+                    <option>20</option>
+                    <option>19</option>
+                    <option>18</option>
+                    <option>17</option>
+                    <option>16</option>
+                    <option>15</option>
+                    <option>14</option>
+                    <option>13</option>
+                    <option>12</option>
+                    <option>11</option>
+                    <option>10</option>
+                    <option>9</option>
+                    <option>8</option>
+                    <option>7</option>
+                    <option>6</option>
+                    <option>5</option>
+                    <option>4</option>
+                    <option>3</option>
+                    <option>2</option>
+                    <option>1</option>
+                    <option>0</option>
+                    <option>-1</option>
+                    <option>-2</option>
+                    <option>-3</option>
+                    <option>-4</option>
+                    <option>-5</option>
+                    <option>-6</option>
+                    <option>-7</option>
+                    <option>-8</option>
+                    <option>-9</option>
+                    <option>-10</option>
+                    <option>-11</option>
+                    <option>-12</option>
+                    <option>-13</option>
+                    <option>-14</option>
+                    <option>-15</option>
                 </select>
               </div>
 
               <div class="input-group vw">
                 <label for="vw">V/W</label>
                 <select id="vw">
-                  <option>6</option>
+                    <option value="0" selected disabled hidden>kt</option>
+                    <option>30</option>
+                    <option>29</option>
+                    <option>28</option>
+                    <option>27</option>
+                    <option>26</option>
+                    <option>25</option>
+                    <option>24</option>
+                    <option>23</option>
+                    <option>22</option>
+                    <option>21</option>
+                    <option>20</option>
+                    <option>19</option>
+                    <option>18</option>
+                    <option>17</option>
+                    <option>16</option>
+                    <option>15</option>
+                    <option>14</option>
+                    <option>13</option>
+                    <option>12</option>
+                    <option>11</option>
+                    <option>10</option>
+                    <option>9</option>
+                    <option>8</option>
+                    <option>7</option>
+                    <option>6</option>
+                    <option>5</option>
+                    <option>4</option>
+                    <option>3</option>
+                    <option>2</option>
+                    <option>1</option>
+                    <option>0</option>
+                    <option>-1</option>
+                    <option>-2</option>
+                    <option>-3</option>
+                    <option>-4</option>
+                    <option>-5</option>
+                    <option>-6</option>
+                    <option>-7</option>
+                    <option>-8</option>
+                    <option>-9</option>
+                    <option>-10</option>
                 </select>
               </div>
 

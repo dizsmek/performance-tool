@@ -56,6 +56,47 @@ function calculateFactoredRunwayDistance(tora, toda, asda) {
   return Math.round(Math.min(tora, toda / 1.15));
 }
 
+function calculateASDR(elevation, oat, tom, vw, contamination, slope) {
+  const dash = 0.0000079 * Math.pow(elevation, 2) + 0.1856 * elevation + 1702;
+  const dast =
+    (oat + 15) *
+    (-0.00000014 * Math.pow(elevation, 2) + 0.00208 * elevation + 21.79);
+
+  const dasm =
+    (3800 - tom) *
+    (-0.000000015 * Math.pow(dash + dast, 2) -
+      0.000579 * (dash + dast) +
+      253);
+  
+  let dasw;
+
+  if (vw === 0) {
+    dasw = 0;
+  } else if (vw < 0) {
+    dasw =
+      vw *
+      ( 0.00000026* Math.pow(dash + dast + dasm, 2) -
+        0.0433 * (dash + dast + dasm) -
+        12.61);
+  } else {
+    dasw =
+      vw *
+      (0.0000007 * Math.pow(dash + dast + dasm, 2) -
+        0.0141 * (dash + dast + dasm) -
+        6.35);
+  }
+
+  const asdr = Math.round(
+    ((dash + dasw + dasm + dast) * contamination * (1 + 0.05 * slope)) / 3.28
+  );
+
+  return asdr;
+}
+
+function calculateRemainingStoppingDistance (asdr, asda) {
+  const remainingStoppingDistance = asda - asdr;
+}
+
 function calculate() {
   const tora = +document.getElementById("tora").value;
   const toda = +document.getElementById("toda").value;
@@ -81,12 +122,18 @@ function calculate() {
     toda,
     asda
   );
+  const asdr = calculateASDR(elevation, oat, tom, vw, contamination, slope);
+  const remainingStoppingDistance = calculateRemainingStoppingDistance(asdr, asda)
 
   const todrResultElement = document.getElementById("todr");
   const factoredRunwayDistanceResultElement = document.getElementById(
     "factored-runway-distance"
   );
+  const asdrResultElement = document.getElementById("asdr");
+  const remainingStoppingDistance = document.getElementById("remainingStoppingDistance");
 
   todrResultElement.innerText = todr + "m";
   factoredRunwayDistanceResultElement.innerText = factoredRunwayDistance + "m";
+  asdrResultElement.innerText = asdr + "m";
+  remainingStoppingDistanceResultElement.innerText = remainingStoppingDistance + "m";
 }
