@@ -1,0 +1,251 @@
+/* --- START OF CSS RESET --- */
+/* https://andy-bell.co.uk/a-more-modern-css-reset/ */
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin-block-end: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core body defaults */
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1,
+h2,
+h3,
+h4,
+button,
+input,
+label {
+  line-height: 1.1;
+}
+
+/* Balance text wrapping on headings */
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: currentColor;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
+}
+
+/* --- END OF CSS RESET --- */
+
+.header {
+  height: 50px;
+  width: 100%;
+  background-color: lightgrey;
+}
+
+.app-wrapper {
+  display: flex;
+}
+
+.navigation-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: calc(100vh - 50px); /* substract the height of the header */
+  flex: 0 0 75px;
+  background-color: #bbb;
+}
+
+.navigation-bar .link {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: inherit;
+  text-decoration: none;
+}
+
+.navigation-bar .link:hover {
+  background-color: grey;
+}
+
+.app {
+  padding: 20px;
+  width: 100%;
+}
+
+.app .divider {
+  margin-block: 20px;
+}
+
+.app .inputs-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.app .box-content {
+  padding: 10px;
+  padding-top: 20px;
+  border: 1px solid darkgrey;
+  border-radius: 0 15px 15px 15px;
+  background-color: white;
+}
+
+.app .box-content::before {
+  top: -2px;
+  position: absolute;
+  background: white;
+  padding: 5px;
+  left: 1px;
+  height: 2px;
+  color: transparent;
+}
+
+.app .results::before {
+  top: -2px;
+  position: absolute;
+  background: white;
+  padding: 5px;
+  left: 1px;
+  height: 2px;
+  color: transparent;
+}
+
+.app .box {
+  position: relative;
+  margin-right: 10px;
+}
+
+.app .box:last-child {
+  margin-right: 0;
+}
+
+.app .box.aircraft {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.app .box .box-title-shape {
+  color: transparent;
+  position: absolute;
+  border: 1px solid darkgrey;
+  border-radius: 15px;
+  height: 30px;
+  top: -15px;
+  padding: 5px;
+  z-index: -10;
+}
+
+.app .box .box-title {
+  position: absolute;
+  border-radius: 15px;
+  top: -15px;
+  padding: 5px;
+  z-index: 10;
+}
+
+.app .box-content .input-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.app .box-content .input-group > * {
+  margin-right: 5px;
+}
+
+.app .box-content .input-group > *:last-child {
+  margin-right: 0;
+}
+
+.app .box-content input {
+  border-radius: 10px;
+  padding-right: 15px;
+}
+
+.app .box-content .input-with-unit {
+  position: relative;
+}
+
+.app .box-content .input-with-unit .unit {
+  position: absolute;
+  z-index: 10;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.75em;
+}
+
+.app .inputs-wrapper .calculate-button {
+  width: 100%;
+}
+
+.app .box-content .result {
+  height: 30px;
+  width: 100%;
+  border-radius: 15px;
+  background-color: lightgrey;
+}

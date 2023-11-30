@@ -1,0 +1,27 @@
+.app .runway-parameters .box-content::before {
+  content: "Runway Parameters";
+}
+
+.app .atmosphere .box-content::before {
+  content: "Atmosphere";
+}
+
+.app .aircraft .box-content::before {
+  content: "Aircraft";
+}
+
+.app .factored-runway-distance .box-content::before {
+  content: "Factored runway distance";
+}
+
+.app .todr .box-content::before {
+  content: "TODR";
+}
+
+.app .asdr .box-content::before {
+  content: "ASDR";
+}
+
+.app .remaining-stopping-distance .box-content::before {
+  content: "Remaining stopping distance";
+}
