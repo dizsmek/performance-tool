@@ -1,0 +1,107 @@
+.interface{
+  
+  display: grid;
+  height: 500px;
+  column-gap: 30px;
+  row-gap: 30px;
+  margin-top: 50px;
+  margin-left: 30px;
+  margin-right: 30px;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 976px;
+}
+
+.input1, .input2, .input3, .output1, .output2 {
+  position: relative;
+  border: solid 2px white;
+  border-top-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border-top-left-radius: 15px;;
+  background-color: grey;
+  
+}
+
+.input1, .input2, .input3{
+  transition: box-shadow 0.2s, background-color 0.2s;
+}
+
+.input1:hover, .input2:hover, .input3:hover{
+  background-color: rgb(170, 170, 170);
+  box-shadow: 0px 0px 20px rgba(255,255,255,0.25);
+}
+
+.input1{
+  
+  height: 150px;
+}
+
+.input2 {
+  
+  height: 150px;
+}
+
+.input3 {
+  
+  height: 150px;
+}
+
+.output1 {
+  
+  height: 100px;
+}
+
+.output2 {
+  
+  height: 100px;
+}
+
+.output3 {
+  
+  height: 100px;
+}
+
+.label-area {
+  position: absolute;
+  top: -24px;
+  left: -2px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  padding-top: 3px;
+  height: 40px;
+  background-color: grey;
+  font-size: 14px;
+  border-left: solid 2px white;
+  border-top: solid 2px white;
+  border-right: solid 2px white;
+  border-bottom: none;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+  z-index: -1;
+}
+
+.input-inside {
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  display: grid;
+  grid-template-rows: 33% 33% 33%;
+  justify-content: left;
+  align-items: center;
+  margin: 5px;
+  width: 100%;
+  height: 100%;
+}
+
+.input-field {
+  display: flex;
+  align-items: start;
+  padding-left: 10px;
+}
+
+label {
+  padding-top: 4px;
+  padding-right: 10px;
+}
+

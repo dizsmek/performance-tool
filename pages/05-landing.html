@@ -4,12 +4,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" href="../styles/styles.css" />
-    <link rel="stylesheet" type="text/css" href="../styles/take-off.css" />
-    <title>Take-off</title>
+    <link rel="stylesheet" type="text/css" href="../styles/landing.css" />
+    <title>Landing</title>
   </head>
   <body>
     <header class="header">Piper PA-44-180 Seminole Performance Tool</header>
     <div class="app-wrapper">
+
       <nav class="navigation-bar">
         <a href="#" class="link">General</a>
         <a href="02-take-off.html" class="link">Take-off</a>
@@ -19,10 +20,75 @@
         <a href="#" class="link">Fuel</a>
         <a href="#" class="link">Mass</a>
       </nav>
-      <div class="app">
 
+      <div class="interface">
+
+        <div class="input1">
+          <div class="label-area">
+            Runway parameters
+          </div>
+
+          <div class="input-inside">
+
+            <div class="input-field">
+              <label for="lda">LDA</label>
+              <input placeholder="meters" id="lda">
+            </div>
+  
+            <div class="input-field">
+              <label for="slope">Slope</label>
+              <input placeholder="meters" id="slope">
+            </div>
+  
+            <div class="input-field">
+              <label for="contamination">Contamination</label>
+              <select id="contamination">
+                <option>Dry</option>
+                <option>Wet</option>
+                <option>Dry, grass</option>
+                <option>Wet, grass</option>
+              </select>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="input2">
+          <div class="label-area">
+            Atmosphere
+          </div>
+          input2
+        </div>
+
+        <div class="input3">
+          <div class="label-area">
+            Aircraft
+          </div>
+          input3
+        </div>
+
+        <div class="output1">
+          <div class="label-area">
+            LDR
+          </div>
+          output1
+        </div>
+        <div class="output2">
+          <div class="label-area">
+            Remaining Stopping Distance
+          </div>
+          output2
+        </div>
+
+        <div class="output3">
+          
+        </div>
 
       </div>
-      <script src="../scripts/landing.js"></script>
-    </body>
-  </html>
+
+     
+     
+    </div>
+    <script src="../scripts/landing.js"></script>
+  </body>
+</html>
