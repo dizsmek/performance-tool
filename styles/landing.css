@@ -24,42 +24,34 @@
 
 .input1, .input2, .input3{
   transition: box-shadow 0.2s, background-color 0.2s;
+  
 }
+
+.input1, .input2{
+  height: 150px;
+}
+
+.input3 {
+  height: 64px;
+
+}
+
 
 .input1:hover, .input2:hover, .input3:hover{
   background-color: rgb(170, 170, 170);
   box-shadow: 0px 0px 20px rgba(255,255,255,0.25);
 }
 
-.input1{
-  
-  height: 150px;
+.right-section{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.input2 {
-  
-  height: 150px;
+.output1, .output2 {
+  height: 64px;
 }
 
-.input3 {
-  
-  height: 150px;
-}
-
-.output1 {
-  
-  height: 100px;
-}
-
-.output2 {
-  
-  height: 100px;
-}
-
-.output3 {
-  
-  height: 100px;
-}
 
 .label-area {
   position: absolute;
@@ -81,27 +73,43 @@
   z-index: -1;
 }
 
-.input-inside {
-  position: absolute;
-  top: -5px;
-  left: -5px;
-  display: grid;
-  grid-template-rows: 33% 33% 33%;
-  justify-content: left;
-  align-items: center;
-  margin: 5px;
-  width: 100%;
-  height: 100%;
-}
-
-.input-field {
+.input-field-lda, .input-field-oat, .input-field-landing-mass {
   display: flex;
-  align-items: start;
-  padding-left: 10px;
+  margin-top: 17px;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  margin-right: 5px;
 }
 
-label {
-  padding-top: 4px;
-  padding-right: 10px;
+.input-label {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 30px; 
 }
 
+.input-field-slope, .input-field-contamination, .input-field-elevation, .input-field-vw {
+  display: flex;
+  margin-top: 20px;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+ 
+
+.drop-down-label {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 80px; 
+}
+
+.input-label-elevation{
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 52px;
+}

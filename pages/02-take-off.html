@@ -28,36 +28,32 @@
 
               <div class="input-group tora">
                 <label for="tora">TORA</label>
-                <div class="input-with-unit">
-                  <input id="tora" />
-                  <span class="unit">m</span>
+                <div>
+                  <input class="text-input" placeholder="meters" id="tora" />
                 </div>
                 <span>{500;4000}</span>
               </div>
 
               <div class="input-group toda">
                 <label for="toda">TODA</label>
-                <div class="input-with-unit">
-                  <input id="toda" />
-                  <span class="unit">m</span>
+                <div>
+                  <input class="text-input" placeholder="meters" id="toda" />
                 </div>
                 <span>{500;4000}</span>
               </div>
 
               <div class="input-group asda">
                 <label for="asda">ASDA</label>
-                <div class="input-with-unit">
-                  <input id="asda" />
-                  <span class="unit">m</span>
+                <div>
+                  <input class="text-input" placeholder="meters"  id="asda" />
                 </div>
                 <span>{500;4000}</span>
               </div>
 
               <div class="input-group slope">
                 <label for="slope">Slope</label>
-                <div class="input-with-unit-slope">
-                  <input id="slope" />
-                  <span class="unit">%</span>
+                <div>
+                  <input class="text-input" placeholder="%"  id="slope" />
                 </div>
                 <span>{0;2}</span>
               </div>
@@ -65,7 +61,7 @@
               <div class="input-group contamination">
                 <label for="contamination">Contamination</label>
                 <div class="input-with-unit">
-                  <select id="contamination">
+                  <select class="drop-down-input" id="contamination">
                     <option>Dry</option>
                     <option>Wet</option>
                     <option>Dry, grass</option>
@@ -83,7 +79,7 @@
             <div class="box-content">
               <div class="input-group oat">
                 <label for="oat">OAT</label>
-                <select id="oat">
+                <select class="drop-down-input" id="oat">
                     <option value="none" selected disabled hidden>°C</option>
                     <option>40</option>
                     <option>39</option>
@@ -146,7 +142,7 @@
 
               <div class="input-group vw">
                 <label for="vw">W/V</label>
-                <select id="vw">
+                <select class="drop-down-input"  id="vw">
                     <option value="0" selected disabled hidden>kt</option>
                     <option>30</option>
                     <option>29</option>
@@ -194,9 +190,8 @@
 
               <div class="input-group elevation">
                 <label for="elevation">Elevation</label>
-                <div class="input-with-unit">
-                  <input id="elevation" />
-                  <span class="unit">ft</span>
+                <div>
+                  <input placeholder="feet" class="text-input" id="elevation" />
                 </div>
                 <span>{0;4000}</span>
               </div>
@@ -210,8 +205,7 @@
               <div class="input-group tom">
                 <label for="tom">TOM</label>
                 <div class="input-with-unit">
-                  <input id="tom" />
-                  <span class="unit">lb</span>
+                  <input placeholder="lbs" class="text-input" id="tom" />
                 </div>
                 <span>{2750;3800}</span>
               </div>
