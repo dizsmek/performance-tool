@@ -1,31 +1,4 @@
-.interface{
-  
-  display: grid;
-  height: 500px;
-  column-gap: 30px;
-  row-gap: 30px;
-  margin-top: 50px;
-  margin-left: 30px;
-  margin-right: 30px;
-  grid-template-columns: 1fr 1fr 1fr;
-  width: 976px;
-}
 
-.input1, .input2, .input3, .output1, .output2 {
-  position: relative;
-  border: solid 2px white;
-  border-top-right-radius: 15px;
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
-  border-top-left-radius: 15px;;
-  background-color: grey;
-  
-}
-
-.input1, .input2, .input3{
-  transition: box-shadow 0.2s, background-color 0.2s;
-  
-}
 
 .input1, .input2{
   height: 150px;
@@ -36,43 +9,6 @@
 
 }
 
-
-.input1:hover, .input2:hover, .input3:hover{
-  background-color: rgb(170, 170, 170);
-  box-shadow: 0px 0px 20px rgba(255,255,255,0.25);
-}
-
-.right-section{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.output1, .output2 {
-  height: 64px;
-}
-
-
-.label-area {
-  position: absolute;
-  top: -24px;
-  left: -2px;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-bottom: 10px;
-  padding-top: 3px;
-  height: 40px;
-  background-color: grey;
-  font-size: 14px;
-  border-left: solid 2px white;
-  border-top: solid 2px white;
-  border-right: solid 2px white;
-  border-bottom: none;
-  border-top-right-radius: 15px;
-  border-top-left-radius: 15px;
-  z-index: -1;
-}
-
 .input-field-lda, .input-field-oat, .input-field-landing-mass {
   display: flex;
   margin-top: 17px;
@@ -81,13 +17,6 @@
   margin-right: 5px;
 }
 
-.input-label {
-  margin-top: 5px;
-  margin-bottom: 5px;
-  margin-left: 10px;
-  margin-right: 10px;
-  width: 30px; 
-}
 
 .input-field-slope, .input-field-contamination, .input-field-elevation, .input-field-vw {
   display: flex;
@@ -96,15 +25,7 @@
   margin-left: 5px;
 }
 
- 
 
-.drop-down-label {
-  margin-top: 5px;
-  margin-bottom: 5px;
-  margin-left: 10px;
-  margin-right: 10px;
-  width: 80px; 
-}
 
 .input-label-elevation{
   margin-top: 5px;
@@ -112,4 +33,9 @@
   margin-left: 10px;
   margin-right: 10px;
   width: 52px;
+}
+
+.calculate-button {
+  width: 100%;
+  margin-bottom: 280px;
 }

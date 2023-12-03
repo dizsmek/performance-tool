@@ -1,27 +1,54 @@
-.app .runway-parameters .box-content::before {
-  content: "Runway Parameters";
+
+
+.input1 {
+  height: 236px;
 }
 
-.app .atmosphere .box-content::before {
-  content: "Atmosphere";
+.input2 {
+  height: 150px;
 }
 
-.app .aircraft .box-content::before {
-  content: "Aircraft";
+.input3 {
+  height: 64px;
+
 }
 
-.app .factored-runway-distance .box-content::before {
-  content: "Factored runway distance";
+.input-field-tora, .input-field-oat, .input-field-take-off-mass {
+  display: flex;
+  margin-top: 17px;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  margin-right: 5px;
 }
 
-.app .todr .box-content::before {
-  content: "TODR";
+.input-field-toda, .input-field-asda, .input-field-slope, .input-field-contamination, .input-field-elevation, .input-field-vw {
+  display: flex;
+  margin-top: 20px;
+  margin-right: 5px;
+  margin-left: 5px;
 }
 
-.app .asdr .box-content::before {
-  content: "ASDR";
+.input-label-elevation{
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 52px;
 }
 
-.app .remaining-stopping-distance .box-content::before {
-  content: "Remaining stopping distance";
+.output3, .output4 {
+  position: relative;
+  border: solid 2px white;
+  border-top-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border-top-left-radius: 15px;;
+  background-color: grey;
 }
+
+.calculate-button {
+  width: 100%;
+  margin-bottom: 168px;
+}
+
+
