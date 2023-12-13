@@ -1,4 +1,16 @@
+
+
+
+
+
+
+
+
+
+
+
 function calculateTODR(elevation, oat, tom, vw, contamination, slope) {
+
   const dtoh = 0.0000125 * Math.pow(elevation, 2) + 0.155 * elevation + 1720;
   const dtot =
     (oat + 15) *
@@ -50,13 +62,14 @@ function calculateTODR(elevation, oat, tom, vw, contamination, slope) {
 
 function calculateFactoredRunwayDistance(tora, toda, asda) {
   if (tora === toda && toda === asda) {
-    return tora;
+    return tora/1.25;
   }
 
   return Math.round(Math.min(tora, toda / 1.15));
 }
 
 function calculateASDR(elevation, oat, tom, vw, contamination, slope) {
+
   const dash = 0.0000079 * Math.pow(elevation, 2) + 0.1856 * elevation + 1702;
   const dast =
     (oat + 15) *
@@ -66,7 +79,7 @@ function calculateASDR(elevation, oat, tom, vw, contamination, slope) {
     (3800 - tom) *
     (-0.000000015 * Math.pow(dash + dast, 2) -
       0.000579 * (dash + dast) +
-      253);
+      0.253);
   
   let dasw;
 
@@ -87,15 +100,45 @@ function calculateASDR(elevation, oat, tom, vw, contamination, slope) {
   }
 
   const asdr = Math.round(
-    ((dash + dasw + dasm + dast) * contamination * (1 + 0.05 * slope)) / 3.28
+    ((dash + dast + dasm + dasw) * contamination * (1 + 0.05 * slope)) / 3.28
   );
-
+    
   return asdr;
+  
 }
 
-function calculateRemainingStoppingDistance (asdr, asda) {
+
+function calculateRemainingStoppingDistance (asda, asdr) {
   const remainingStoppingDistance = asda - asdr;
+
+  return remainingStoppingDistance;
 }
+
+
+
+
+function calculateToraValue(tora) {
+  const toraValue = tora;
+  
+  return toraValue;
+}
+
+function calculateStopwayValue (asda, tora) {
+  const stopwayValue = asda - tora;
+
+  return stopwayValue;
+}
+
+function calculateClearwayValue (toda, tora) {
+  const clearwayValue = toda - tora;
+
+  return clearwayValue;
+}
+
+
+
+
+
 
 function calculate() {
   const tora = +document.getElementById("tora").value;
@@ -108,13 +151,17 @@ function calculate() {
   const elevation = +document.getElementById("elevation").value;
   const tom = +document.getElementById("tom").value;
 
-  if (contamination === "Dry, grass") {
+  if (contamination === "Dry") {
+    contamination = 1;
+  } else if (contamination === "Dry, grass") {
     contamination = 1.2;
   } else if (contamination === "Wet, grass") {
     contamination = 1.3;
   } else {
     contamination = 1;
   }
+
+
 
   const todr = calculateTODR(elevation, oat, tom, vw, contamination, slope);
   const factoredRunwayDistance = calculateFactoredRunwayDistance(
@@ -123,17 +170,37 @@ function calculate() {
     asda
   );
   const asdr = calculateASDR(elevation, oat, tom, vw, contamination, slope);
-  const remainingStoppingDistance = calculateRemainingStoppingDistance(asdr, asda)
+  const remainingStoppingDistance = calculateRemainingStoppingDistance(asda, asdr);
+  const toraValue = calculateToraValue (tora);
+  const stopwayValue = calculateStopwayValue (asda, tora);
+  const clearwayValue = calculateClearwayValue (toda, tora);
+
 
   const todrResultElement = document.getElementById("todr");
   const factoredRunwayDistanceResultElement = document.getElementById(
     "factored-runway-distance"
   );
   const asdrResultElement = document.getElementById("asdr");
-  const remainingStoppingDistance = document.getElementById("remainingStoppingDistance");
+  const remainingStoppingDistanceResultElement = document.getElementById("remaining-stopping-distance");
+  const toraValueResultElement = document.getElementById("tora-value");
+  const stopwayValueResultElement = document.getElementById("stopway-value");
+  const clearwayValueResultElement = document.getElementById("clearway-value");
 
-  todrResultElement.innerText = todr + "m";
-  factoredRunwayDistanceResultElement.innerText = factoredRunwayDistance + "m";
-  asdrResultElement.innerText = asdr + "m";
-  remainingStoppingDistanceResultElement.innerText = remainingStoppingDistance + "m";
+
+  todrResultElement.innerText = todr + " m";
+  factoredRunwayDistanceResultElement.innerText = factoredRunwayDistance + " m";
+  asdrResultElement.innerText = asdr + " m";
+  remainingStoppingDistanceResultElement.innerText = remainingStoppingDistance + " m";
+  toraValueResultElement.innerText = toraValue + " m";
+  stopwayValueResultElement.innerText = stopwayValue + " m";
+  clearwayValueResultElement.innerText = clearwayValue + " m";
+  
+
+  
+
+
+
+
+
+
 }

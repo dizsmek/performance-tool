@@ -1,12 +1,56 @@
 
 
-.input1, .input2{
+.input2, .right-section {
+  margin-left: 30px;
+  height: 150px; 
+}
+
+.input1 {
   height: 150px;
 }
 
 .input3 {
   height: 64px;
+}
 
+.right-section{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.input-section {
+  display: flex;
+  margin-top: 54px;
+  height: 180px;
+  border-bottom: 2px white solid;
+  margin-left: 30px;
+  margin-bottom: 30px;
+}
+
+.output-section {
+  display: flex;
+  height: 120px;
+  border-bottom: 2px solid white;
+  margin-left: 30px;
+  margin-bottom: 54px;
+  align-items: center;
+}
+
+.output1, .output2, .output3 {
+  flex: 1;
+  position: relative;
+  height: 64px;
+  border: solid 2px white;
+  border-top-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border-top-left-radius: 15px;;
+  background-color: grey;
+}
+
+.output2, .output3 {
+  margin-left: 30px;
 }
 
 .input-field-lda, .input-field-oat, .input-field-landing-mass {
@@ -26,7 +70,6 @@
 }
 
 
-
 .input-label-elevation{
   margin-top: 5px;
   margin-bottom: 5px;
@@ -35,7 +78,4 @@
   width: 52px;
 }
 
-.calculate-button {
-  width: 100%;
-  margin-bottom: 280px;
-}
+

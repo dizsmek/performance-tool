@@ -13,230 +13,244 @@
     <div class="app-wrapper">
 
       <nav class="navigation-bar">
-        <a href="#" class="link">General</a>
-        <a href="02-take-off.html" class="link">Take-off</a>
-        <a href="#" class="link">Gradients</a>
-        <a href="#" class="link">Cruise</a>
-        <a href="05-landing.html" class="link">Landing</a>
-        <a href="#" class="link">Fuel</a>
-        <a href="#" class="link">Mass</a>
-      </nav>
+        <div class="links">
+          <div class="link-section">
+            <a href="#" class="link">General</a>
+          </div>
+          <div class="link-section">
+            <a href="02-take-off.html" class="link">Take-off</a>
+          </div>
+          <div class="link-section">
+            <a href="03-gradients.html" class="link">Gradients</a>
+          </div>  
+          <div class="link-section">
+            <a href="05-landing.html" class="link">Landing</a>
+          </div>
+          <div class="link-section">
+            <a href="#" class="link">Fuel</a>
+          </div>
+          <div class="link-section">
+            <a href="#" class="link">Mass</a>
+          </div>
+        </div>
+      </nav>  
 
       <div class="interface">
 
-        <div class="input1">
+        <div class="input-section">
+          <div class="input1">
 
-          <div class="label-area">
-            Runway Parameters
-          </div>
-            
-          <div class="input-field">
-
-            <div class="input-field-tora">
-              <div>
-                <p class="input-label">TORA</p>
-              </div>
-      
-              <div>
-                <input class="text-input" placeholder="meters" id="tora" />
-              </div>
-
-              <div>
-                <p class="input-range">{500;4000}</p>
-              </div>
-
+            <div class="label-area">
+              Runway Parameters
             </div>
-
-            <div class="input-field-toda">
-
-              <div>
-                <p class="input-label">TODA</p>
-              </div>
-
-              <div>
-                <input class="text-input" placeholder="meters" id="toda" />
-              </div>
-
-              <div>
-                <p class="input-range">{500;4000}</p>
-              </div>
               
-            </div>
-
-            <div class="input-field-asda">
-
-              <div>
-                <p class="input-label">ASDA</p>
+            <div class="input-field">
+  
+              <div class="input-field-tora">
+                <div>
+                  <p class="input-label">TORA</p>
+                </div>
+        
+                <div>
+                  <input class="text-input" placeholder="meters" id="tora" />
+                </div>
+  
+                <div>
+                  <p class="input-range">{500;4000}</p>
+                </div>
+  
               </div>
-              
-              <div>
-                <input class="text-input" placeholder="meters"  id="asda" />
+  
+              <div class="input-field-toda">
+  
+                <div>
+                  <p class="input-label">TODA</p>
+                </div>
+  
+                <div>
+                  <input class="text-input" placeholder="meters" id="toda" />
+                </div>
+  
+                <div>
+                  <p class="input-range">{500;4000}</p>
+                </div>
+                
               </div>
-
-              <div>
-                <p class="input-range">{500;4000}</p>
+  
+              <div class="input-field-asda">
+  
+                <div>
+                  <p class="input-label">ASDA</p>
+                </div>
+                
+                <div>
+                  <input class="text-input" placeholder="meters"  id="asda" />
+                </div>
+  
+                <div>
+                  <p class="input-range">{500;4000}</p>
+                </div>
+                
               </div>
-              
-            </div>
-
-            <div class="input-field-slope">
-              <div>
-                <p class="input-label">Slope</p>
+  
+              <div class="input-field-slope">
+                <div>
+                  <p class="input-label">Slope</p>
+                </div>
+                <input placeholder="%" id="slope" class="text-input">
+                <p class="input-range">{0;2}</p>
               </div>
-              <input placeholder="%" id="slope" class="text-input">
-              <p class="input-range">{0;2}</p>
-            </div>
-
-            <div class="input-field-contamination">
-
-              <div>
-                <p class="drop-down-label">Contamination</p>
+  
+              <div class="input-field-contamination">
+  
+                <div>
+                  <p class="drop-down-label">Contamination</p>
+                </div>
+  
+                <div>
+                  <select class="drop-down-input" id="contamination">
+                    <option>Dry</option>
+                    <option>Wet</option>
+                    <option>Dry, grass</option>
+                    <option>Wet, grass</option>
+                  </select>
+                </div>
+                
               </div>
-
-              <div>
-                <select class="drop-down-input" id="contamination">
-                  <option>Dry</option>
-                  <option>Wet</option>
-                  <option>Dry, grass</option>
-                  <option>Wet, grass</option>
-                </select>
-              </div>
-              
+    
             </div>
   
           </div>
-
-        </div>
-
-        <div class="input2">
-          <div class="label-area">
-            Atmosphere
-          </div>
-
-          <div class="input-field-oat">
-            <p class="input-label">OAT</p>
-            <select class="drop-down-input" id="oat">
-                <option value="none" selected disabled hidden>°C</option>
-                <option>40</option>
-                <option>39</option>
-                <option>38</option>
-                <option>37</option>
-                <option>36</option>
-                <option>35</option>
-                <option>34</option>
-                <option>33</option>
-                <option>32</option>
-                <option>31</option>
-                <option>30</option>
-                <option>29</option>
-                <option>28</option>
-                <option>27</option>
-                <option>26</option>
-                <option>25</option>
-                <option>24</option>
-                <option>23</option>
-                <option>22</option>
-                <option>21</option>
-                <option>20</option>
-                <option>19</option>
-                <option>18</option>
-                <option>17</option>
-                <option>16</option>
-                <option>15</option>
-                <option>14</option>
-                <option>13</option>
-                <option>12</option>
-                <option>11</option>
-                <option>10</option>
-                <option>9</option>
-                <option>8</option>
-                <option>7</option>
-                <option>6</option>
-                <option>5</option>
-                <option>4</option>
-                <option>3</option>
-                <option>2</option>
-                <option>1</option>
-                <option>0</option>
-                <option>-1</option>
-                <option>-2</option>
-                <option>-3</option>
-                <option>-4</option>
-                <option>-5</option>
-                <option>-6</option>
-                <option>-7</option>
-                <option>-8</option>
-                <option>-9</option>
-                <option>-10</option>
-                <option>-11</option>
-                <option>-12</option>
-                <option>-13</option>
-                <option>-14</option>
-                <option>-15</option>
-            </select>
-          </div>
-
-          <div class="input-field-vw">
-            <p class="input-label">W/V</p>
-            <select class="drop-down-input"  id="vw">
-                <option value="0" selected disabled hidden>kt</option>
-                <option>30</option>
-                <option>29</option>
-                <option>28</option>
-                <option>27</option>
-                <option>26</option>
-                <option>25</option>
-                <option>24</option>
-                <option>23</option>
-                <option>22</option>
-                <option>21</option>
-                <option>20</option>
-                <option>19</option>
-                <option>18</option>
-                <option>17</option>
-                <option>16</option>
-                <option>15</option>
-                <option>14</option>
-                <option>13</option>
-                <option>12</option>
-                <option>11</option>
-                <option>10</option>
-                <option>9</option>
-                <option>8</option>
-                <option>7</option>
-                <option>6</option>
-                <option>5</option>
-                <option>4</option>
-                <option>3</option>
-                <option>2</option>
-                <option>1</option>
-                <option>0</option>
-                <option>-1</option>
-                <option>-2</option>
-                <option>-3</option>
-                <option>-4</option>
-                <option>-5</option>
-                <option>-6</option>
-                <option>-7</option>
-                <option>-8</option>
-                <option>-9</option>
-                <option>-10</option>
-            </select>
-          </div>
-          
-          <div class="input-field-elevation">
-            <div>
-              <p class="input-label-elevation">Elevation</p>
+  
+          <div class="input2">
+            <div class="label-area">
+              Atmosphere
             </div>
-            <input placeholder="feet" id="elevation" class="text-input">
-            <p class="input-range">{0;4000}</p>
+  
+            <div class="input-field-oat">
+              <p class="input-label">OAT</p>
+              <select class="drop-down-input" id="oat">
+                  <option value="none" selected disabled hidden>°C</option>
+                  <option>40</option>
+                  <option>39</option>
+                  <option>38</option>
+                  <option>37</option>
+                  <option>36</option>
+                  <option>35</option>
+                  <option>34</option>
+                  <option>33</option>
+                  <option>32</option>
+                  <option>31</option>
+                  <option>30</option>
+                  <option>29</option>
+                  <option>28</option>
+                  <option>27</option>
+                  <option>26</option>
+                  <option>25</option>
+                  <option>24</option>
+                  <option>23</option>
+                  <option>22</option>
+                  <option>21</option>
+                  <option>20</option>
+                  <option>19</option>
+                  <option>18</option>
+                  <option>17</option>
+                  <option>16</option>
+                  <option>15</option>
+                  <option>14</option>
+                  <option>13</option>
+                  <option>12</option>
+                  <option>11</option>
+                  <option>10</option>
+                  <option>9</option>
+                  <option>8</option>
+                  <option>7</option>
+                  <option>6</option>
+                  <option>5</option>
+                  <option>4</option>
+                  <option>3</option>
+                  <option>2</option>
+                  <option>1</option>
+                  <option>0</option>
+                  <option>-1</option>
+                  <option>-2</option>
+                  <option>-3</option>
+                  <option>-4</option>
+                  <option>-5</option>
+                  <option>-6</option>
+                  <option>-7</option>
+                  <option>-8</option>
+                  <option>-9</option>
+                  <option>-10</option>
+                  <option>-11</option>
+                  <option>-12</option>
+                  <option>-13</option>
+                  <option>-14</option>
+                  <option>-15</option>
+              </select>
+            </div>
+  
+            <div class="input-field-vw">
+              <p class="input-label">W/V</p>
+              <select class="drop-down-input"  id="vw">
+                  <option value="0" selected disabled hidden>kt</option>
+                  <option>30</option>
+                  <option>29</option>
+                  <option>28</option>
+                  <option>27</option>
+                  <option>26</option>
+                  <option>25</option>
+                  <option>24</option>
+                  <option>23</option>
+                  <option>22</option>
+                  <option>21</option>
+                  <option>20</option>
+                  <option>19</option>
+                  <option>18</option>
+                  <option>17</option>
+                  <option>16</option>
+                  <option>15</option>
+                  <option>14</option>
+                  <option>13</option>
+                  <option>12</option>
+                  <option>11</option>
+                  <option>10</option>
+                  <option>9</option>
+                  <option>8</option>
+                  <option>7</option>
+                  <option>6</option>
+                  <option>5</option>
+                  <option>4</option>
+                  <option>3</option>
+                  <option>2</option>
+                  <option>1</option>
+                  <option>0</option>
+                  <option>-1</option>
+                  <option>-2</option>
+                  <option>-3</option>
+                  <option>-4</option>
+                  <option>-5</option>
+                  <option>-6</option>
+                  <option>-7</option>
+                  <option>-8</option>
+                  <option>-9</option>
+                  <option>-10</option>
+              </select>
+            </div>
+            
+            <div class="input-field-elevation">
+              <div>
+                <p class="input-label-elevation">Elevation</p>
+              </div>
+              <input placeholder="feet" id="elevation" class="text-input">
+              <p class="input-range">{0;4000}</p>
+            </div>
+  
           </div>
-
-        </div>
-
-        <div class="right-section">
-
-          <div class="input3">
+  
+          <div class="right-section">
+  
+            <div class="input3">
             <div class="label-area">
               Aircraft
             </div>
@@ -255,39 +269,77 @@
             CALCULATE
           </button>
 
+          </div>
         </div>
 
-        <div class="output1">
-          <div class="label-area">
-            Factored Runway Distance
+        <div class="output-section">
+          <div class="output1">
+            <div class="label-area">
+              Factored Runway Distance
+            </div>
+            
+            <div class="result" id="factored-runway-distance"></div>
+          </div>
+  
+          <div class="output2">
+            <div class="label-area">
+              TODR
+            </div>
+            
+            <div class="result" id="todr"></div>
+          </div>
+  
+          <div class="output3">
+            <div class="label-area">
+              ASDR
+            </div>
+            
+            <div class="result" id="asdr"></div>
           </div>
           
-          <div class="result" id="factored-runway-distance"></div>
-        </div>
-        <div class="output2">
-          <div class="label-area">
-            TODR
+          <div class="output4">
+            <div class="label-area">
+              Remaining Stopping Distance
+            </div>
+            
+            <div class="result" id="remaining-stopping-distance"></div>
           </div>
-          
-          <div class="result" id="todr"></div>
         </div>
 
-        <div class="output3">
-          <div class="label-area">
-            ASDA
-          </div>
+        <div class="runway-analysis">
+          <div class="label-area">Runway Analysis</div>
+
+          <div class="to-distance" id="to-distance">TODR</div>
+
+          <div class="runway">
+
+            <div class="tora">
+              <div class="fr-distance" id="fr-distance">Factored Runway Distance</div>
+              <div class="tora-value" id="tora-value"></div>
+            </div>
+
+            <div class="clearway">
+
+              <div class="stopway">
+                <div class="runway-value" id="stopway-value"></div>
+              </div>
+
+              <div class="clearway-value" id="clearway-value"></div>
+              
+            </div>
           
-          <div class="result" id="asda"></div>
-        </div>
-        <div class="output4">
-          <div class="label-area">
-            Remaining Stopping Distance
+
+
           </div>
+
+          <div class="as-distance" id="as-distance">ASDR</div>
+
           
-          <div class="result" id="remaining-stopping-distance"></div>
+
         </div>
 
       </div>
+  
     </div>
     <script src="../scripts/take-off.js"></script>
   </body>

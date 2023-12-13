@@ -111,41 +111,65 @@ textarea:not([rows]) {
 .app-wrapper {
   display: flex;
 }
+body
 
 .navigation-bar {
+  position: absolute;
+  height: 100vh;
+  top: 50px;
+  left: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: calc(100vh - 50px); /* substract the height of the header */
-  flex: 0 0 75px;
   background-color: #bbb;
+  padding-top: 10px;
+  padding-bottom: 30px;
 }
 
-.navigation-bar .link {
+.links {
+  min-height: 50%;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.link-section {
+  flex-direction: column;
+  background-color: #bbb;
+  border-top: 2px solid rgb(87, 87, 87);
+  border-bottom: 2px solid rgb(87, 87, 87);
+  border-radius: 3px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin: 5px;
+  transition: background-color 0.2s;
+}
+
+.link-section:hover {
+  background-color:#e4e4e4;
+}
+
+.link {
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: inherit;
   text-decoration: none;
+  color: white;
+  font-weight: 500;
 }
 
-.navigation-bar .link:hover {
-  background-color: grey;
-}
-
-.interface{
-  
-  display: grid;
-  height: 500px;
-  column-gap: 30px;
-  row-gap: 30px;
-  margin-top: 50px;
-  margin-left: 30px;
+.interface {
+  position: absolute;
+  top: 50px;
+  left: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   margin-right: 30px;
-  grid-template-columns: 1fr 1fr 1fr;
-  width: 976px;
 }
 
 .label-area {
@@ -168,14 +192,34 @@ textarea:not([rows]) {
   z-index: -1;
 }
 
+.label-area-right {
+  position: absolute;
+  top: -24px;
+  right: -2px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  padding-top: 3px;
+  height: 40px;
+  background-color: grey;
+  font-size: 14px;
+  border-left: solid 2px white;
+  border-top: solid 2px white;
+  border-right: solid 2px white;
+  border-bottom: none;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+  z-index: -1;
+}
 
-.input1, .input2, .input3, .output1, .output2 {
+
+.input1, .input2, .input3, .output1, .output2, .output {
   position: relative;
   border: solid 2px white;
   border-top-right-radius: 15px;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
-  border-top-left-radius: 15px;;
+  border-top-left-radius: 15px;
   background-color: grey;
   
 }
@@ -187,17 +231,6 @@ textarea:not([rows]) {
 
 .input1, .input2, .input3{
   transition: box-shadow 0.2s, background-color 0.2s;
-  
-}
-
-.right-section{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.output1, .output2, .output3, .output4 {
-  height: 64px;
 }
 
 .input-label {
@@ -217,21 +250,45 @@ textarea:not([rows]) {
 }
 
 
-
-
-
 .result {
   margin: 17px;
-  height: 24px;
-  border-radius: 12px;
+  height: 28px;
+  border-radius: 14px;
   background-color: lightgrey;
+  padding-top: 6px;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: black;
+  font-weight: bold;
+  font-size: 16px;
 }
+
+.result-right {
+  margin: 17px;
+  height: 28px;
+  border-radius: 14px;
+  background-color: lightgrey;
+  padding-top: 6px;
+  padding-right: 20px;
+  padding-left: 20px;
+  color: black;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.split-results {
+  display: flex;
+  justify-content: space-between;
+}
+
+
 
 .calculate-button {
   height: 26px;
   border: none;
   border-radius: 13px;
   transition: background-color 0.15s;
+  width: 100%; 
 }
 
 .calculate-button:hover{
@@ -248,11 +305,17 @@ textarea:not([rows]) {
 
 .drop-down-input {
   padding-left: 12px;
+  margin-left: 24px;
+}
+
+.drop-down-input:hover {
+  cursor: pointer;
 }
 
 .text-input {
   flex: 1;
   padding-left: 12px;
+  margin-left: 20px;
   box-shadow: inset 1px 2px 5px rgba(0,0,0,0.1);
 }
 
@@ -265,3 +328,24 @@ textarea:not([rows]) {
   width: 70px;
 }
 
+.runway-analysis {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin-left: 30px;
+  padding-left: 50px;
+  padding-top: 30px;
+  height: 200px;
+  position: relative;
+  border: solid 2px white;
+  border-top-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border-top-left-radius: 15px;;
+  background-color: grey;
+}
+
+.input-section, .output-section {
+  border-bottom-left-radius: 8px;
+}
