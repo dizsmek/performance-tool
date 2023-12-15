@@ -1,13 +1,46 @@
+function applyRangeValidation(inputElement, minValue, maxValue) {
+  inputElement.addEventListener('input', function() {
+      var inputValue = inputElement.value.trim();
 
+      // Check if the input is empty
+      if (inputValue === '') {
+          inputElement.style.backgroundColor = '';
+          return; // Exit the function early
+      }
 
+      // Parse the input value to a float
+      inputValue = parseFloat(inputValue);
 
+      // Check if the value is within the range
+      if (!isNaN(inputValue) && inputValue >= minValue && inputValue <= maxValue) {
+          // Set background color to green if within range
+          inputElement.style.backgroundColor = 'lightgreen';
+      } else {
+          // Set background color to red if outside range
+          inputElement.style.backgroundColor = 'lightcoral';
+      }
+  });
+}
 
+// Apply range validation for each input field
+applyRangeValidation(document.getElementById('elevation'), 0, 4000);
+applyRangeValidation(document.getElementById('tora'), 500, 4000);
+applyRangeValidation(document.getElementById('toda'), 500, 4000);
+applyRangeValidation(document.getElementById('asda'), 500, 4000);
+applyRangeValidation(document.getElementById('slope'), 0, 2);
+applyRangeValidation(document.getElementById('tom'), 2750, 3800);
 
+var oatDropdown = document.getElementById('oat');
+var vwDropdown = document.getElementById('vw');
 
+// Attach event listeners to detect changes
+oatDropdown.addEventListener('change', function() {
+  oat.style.backgroundColor = 'lightgreen';
+});
 
-
-
-
+vwDropdown.addEventListener('change', function() {
+  vw.style.backgroundColor = 'lightgreen';
+});   
 
 function calculateTODR(elevation, oat, tom, vw, contamination, slope) {
 
@@ -138,8 +171,6 @@ function calculateClearwayValue (toda, tora) {
 
 
 
-
-
 function calculate() {
   const tora = +document.getElementById("tora").value;
   const toda = +document.getElementById("toda").value;
@@ -191,16 +222,16 @@ function calculate() {
   factoredRunwayDistanceResultElement.innerText = factoredRunwayDistance + " m";
   asdrResultElement.innerText = asdr + " m";
   remainingStoppingDistanceResultElement.innerText = remainingStoppingDistance + " m";
-  toraValueResultElement.innerText = toraValue + " m";
-  stopwayValueResultElement.innerText = stopwayValue + " m";
-  clearwayValueResultElement.innerText = clearwayValue + " m";
+  toraValueResultElement.innerText = "TORA= " + toraValue + " m";
+  stopwayValueResultElement.innerText = "SWY= " + stopwayValue + " m";
+  clearwayValueResultElement.innerText = "CWY= " + clearwayValue + " m";
+
+
   
-
-  
-
-
-
-
-
-
 }
+
+
+
+
+
+

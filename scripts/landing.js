@@ -1,3 +1,49 @@
+function applyRangeValidation(inputElement, minValue, maxValue) {
+  inputElement.addEventListener('input', function() {
+      var inputValue = inputElement.value.trim();
+
+      // Check if the input is empty
+      if (inputValue === '') {
+          inputElement.style.backgroundColor = '';
+          return; // Exit the function early
+      }
+
+      // Parse the input value to a float
+      inputValue = parseFloat(inputValue);
+
+      // Check if the value is within the range
+      if (!isNaN(inputValue) && inputValue >= minValue && inputValue <= maxValue) {
+          // Set background color to green if within range
+          inputElement.style.backgroundColor = 'lightgreen';
+      } else {
+          // Set background color to red if outside range
+          inputElement.style.backgroundColor = 'lightcoral';
+      }
+  });
+}
+
+// Apply range validation for each input field
+applyRangeValidation(document.getElementById('elevation'), 0, 4000);
+applyRangeValidation(document.getElementById('lda'), 500, 4000);
+applyRangeValidation(document.getElementById('slope'), -2, 0);
+applyRangeValidation(document.getElementById('lm'), 2750, 3800);
+
+
+var oatDropdown = document.getElementById('oat');
+var vwDropdown = document.getElementById('vw');
+
+// Attach event listeners to detect changes
+oatDropdown.addEventListener('change', function() {
+  oat.style.backgroundColor = 'lightgreen';
+});
+
+vwDropdown.addEventListener('change', function() {
+  vw.style.backgroundColor = 'lightgreen';
+});    
+
+
+
+
 function calculateLDR(elevation, oat, lm, vw, contamination, slope) {
 
   const dlah = 0.0000019 * Math.pow(elevation, 2) + 0.0313 * elevation + 1380;

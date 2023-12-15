@@ -108,14 +108,14 @@ textarea:not([rows]) {
   padding-top: 16px;
 }
 
-.app-wrapper {
-  display: flex;
+body {
+  height: 930px;
 }
-body
+
 
 .navigation-bar {
   position: absolute;
-  height: 100vh;
+  height: 930px;
   top: 50px;
   left: 0;
   display: flex;
@@ -164,12 +164,13 @@ body
 
 .interface {
   position: absolute;
-  top: 50px;
   left: 80px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   margin-right: 30px;
+  margin-top: 60px;
+  width: 941px;
 }
 
 .label-area {
@@ -306,6 +307,7 @@ body
 .drop-down-input {
   padding-left: 12px;
   margin-left: 24px;
+  width: 60px;
 }
 
 .drop-down-input:hover {
@@ -313,10 +315,10 @@ body
 }
 
 .text-input {
-  flex: 1;
+  width: 60px;
   padding-left: 12px;
   margin-left: 20px;
-  box-shadow: inset 1px 2px 5px rgba(0,0,0,0.1);
+  box-shadow: inset 0px 0px 7px rgba(0,0,0,0.3);
 }
 
 .input-range {
@@ -325,7 +327,7 @@ body
   margin-bottom: 0;
   margin-left: 10px;
   margin-right: 10px;
-  width: 70px;
+  flex: 1;
 }
 
 .runway-analysis {
@@ -348,4 +350,22 @@ body
 
 .input-section, .output-section {
   border-bottom-left-radius: 8px;
+  max-width: 970px;
+}
+
+.notes {
+  position: absolute;
+  top: 50px;
+  left: 110px;
+}
+
+.read-before-use {
+  color: red;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.instructions {
+  width: 700px;
+  line-height: 18px;
 }

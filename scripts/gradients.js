@@ -1,3 +1,62 @@
+function applyRangeValidation(inputElement, minValue, maxValue) {
+  inputElement.addEventListener('input', function() {
+      var inputValue = inputElement.value.trim();
+
+      // Check if the input is empty
+      if (inputValue === '') {
+          inputElement.style.backgroundColor = '';
+          return; // Exit the function early
+      }
+
+      // Parse the input value to a float
+      inputValue = parseFloat(inputValue);
+
+      // Check if the value is within the range
+      if (!isNaN(inputValue) && inputValue >= minValue && inputValue <= maxValue) {
+          // Set background color to green if within range
+          inputElement.style.backgroundColor = 'lightgreen';
+      } else {
+          // Set background color to red if outside range
+          inputElement.style.backgroundColor = 'lightcoral';
+      }
+  });
+}
+
+// Apply range validation for each input field
+applyRangeValidation(document.getElementById('elevation-to'), 0, 5500);
+applyRangeValidation(document.getElementById('elevation-ldg'), 0, 5500);
+applyRangeValidation(document.getElementById('cruise-fl'), 0, 15000);
+applyRangeValidation(document.getElementById('oat-cruise'), -45, 45);
+applyRangeValidation(document.getElementById('cruise-mass'), 2750, 3800);
+applyRangeValidation(document.getElementById('tom'), 2750, 3800);
+applyRangeValidation(document.getElementById('lm'), 2750, 3800);
+applyRangeValidation(document.getElementById('vw-cruise'), -100, 100);
+
+
+var oattoDropdown = document.getElementById('oat-to');
+var vwtoDropdown = document.getElementById('vw-to');
+var oatldgDropdown = document.getElementById('oat-ldg');
+var vwldgDropdown = document.getElementById('vw-ldg');
+
+// Attach event listeners to detect changes
+oattoDropdown.addEventListener('change', function() {
+  oattoDropdown.style.backgroundColor = 'lightgreen';
+});
+
+vwtoDropdown.addEventListener('change', function() {
+  vwtoDropdown.style.backgroundColor = 'lightgreen';
+});   
+
+oatldgDropdown.addEventListener('change', function() {
+  oatldgDropdown.style.backgroundColor = 'lightgreen';
+});
+
+vwldgDropdown.addEventListener('change', function() {
+  vwldgDropdown.style.backgroundColor = 'lightgreen';
+});
+
+
+
 function calculateaeoGearDownToRoc(elevationto, oatto, tom) {
   
   const dadh = 0.0000015 * Math.pow(elevationto, 2) - 0.1267 * elevationto + 1541;

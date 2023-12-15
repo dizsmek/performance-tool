@@ -1,7 +1,6 @@
 
 
 .input2, .right-section {
-  margin-left: 30px;
   height: 150px; 
 }
 
@@ -20,21 +19,26 @@
 }
 
 .input-section {
-  display: flex;
-  margin-top: 54px;
-  height: 180px;
-  border-bottom: 2px white solid;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   margin-left: 30px;
+  margin-top: 54px;
   margin-bottom: 30px;
+  column-gap: 30px;
+  height: 180px; 
+  border-bottom: 2px solid white; 
 }
 
 .output-section {
-  display: flex;
-  height: 120px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  row-gap: 54px;
+  column-gap: 30px;
   border-bottom: 2px solid white;
+  padding-bottom: 30px;
+  padding-top: 24px;
   margin-left: 30px;
   margin-bottom: 54px;
-  align-items: center;
 }
 
 .output1, .output2, .output3 {
@@ -49,9 +53,6 @@
   background-color: grey;
 }
 
-.output2, .output3 {
-  margin-left: 30px;
-}
 
 .input-field-lda, .input-field-oat, .input-field-landing-mass {
   display: flex;
