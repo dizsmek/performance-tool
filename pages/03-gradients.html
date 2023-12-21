@@ -22,13 +22,10 @@
           <a href="03-gradients.html" class="link">Gradients</a>
         </div>  
         <div class="link-section">
-          <a href="05-landing.html" class="link" target="_blank">Landing</a>
+          <a href="04-landing.html" class="link" target="_blank">Landing</a>
         </div>
         <div class="link-section">
-          <a href="#" class="link" target="_blank">Fuel</a>
-        </div>
-        <div class="link-section">
-          <a href="#" class="link" target="_blank">Mass</a>
+          <a href="05-fuel.html" class="link" target="_blank">Fuel</a>
         </div>
       </div>
     </nav>  
@@ -48,15 +45,15 @@
             Take-off
           </div>
 
-          <div class="input-field-elevation">
+          <div class="input-field-top">
             <div>
-              <p class="input-label-elevation">Elevation</p>
+              <p class="input-label">Elevation</p>
             </div>
             <input placeholder="feet" id="elevation-to" class="text-input">
             <p class="input-range">{0;5500}</p>
           </div>
 
-          <div class="input-field-oat">
+          <div class="input-field">
             <p class="input-label">OAT</p>
             <select class="drop-down-input" id="oat-to">
                 <option value="none" selected disabled hidden>°C</option>
@@ -119,7 +116,7 @@
             </select>
           </div>
 
-          <div class="input-field-vw">
+          <div class="input-field">
             <p class="input-label">W/V</p>
             <select class="drop-down-input"  id="vw-to">
                 <option value="0" selected disabled hidden>kt</option>
@@ -167,7 +164,7 @@
             </select>
           </div>
 
-          <div class="input-field-tom">
+          <div class="input-field-bottom">
             <div>
               <p class="input-label">TOM</p>
             </div>
@@ -184,16 +181,16 @@
         </div>
 
         <div class="output">
-          <div class="label-area">
+          <div class="result-label-area">
             AEO Gear Down
           </div>
-          <div class="label-area-right">
+          <div class="result-label-area-right">
             ROC
           </div>
           
           <div class="split-results">
 
-            <div class="result" id="aeo-gear-down-to"></div>
+            <div class="result-left" id="aeo-gear-down-to"></div>
             <div class="note">(78 KIAS)</div>
             <div class="result-right" id="aeo-gear-down-to-roc"></div>
 
@@ -201,16 +198,16 @@
         </div>
 
         <div class="output">
-          <div class="label-area">
+          <div class="result-label-area">
             AEO Gear Up
           </div>
-          <div class="label-area-right">
+          <div class="result-label-area-right">
             ROC
           </div>
           
           <div class="split-results">
 
-            <div class="result" id="aeo-gear-up-to"></div>
+            <div class="result-left" id="aeo-gear-up-to"></div>
             <div class="note">(88 KIAS)</div>
             <div class="result-right" id="aeo-gear-up-to-roc"></div>
 
@@ -218,16 +215,16 @@
         </div>
 
         <div class="output">
-          <div class="label-area">
+          <div class="result-label-area">
             OEI Gear Up
           </div>
-          <div class="label-area-right">
+          <div class="result-label-area-right">
             ROC
           </div>
           
           <div class="split-results">
 
-            <div class="result" id="oei-gear-up-to"></div>
+            <div class="result-left" id="oei-gear-up-to"></div>
             <div class="note">(88 KIAS)</div>
             <div class="result-right" id="oei-gear-up-to-roc"></div>
 
@@ -243,29 +240,29 @@
             Cruise
           </div>
 
-          <div class="input-field-elevation">
+          <div class="input-field-top">
             <div>
-              <p class="input-label-elevation">Cruise Alt</p>
+              <p class="input-label">Cruise Alt</p>
             </div>
             <input placeholder="feet" id="cruise-fl" class="text-input">
             <p class="input-range">{0;15000}</p>
           </div>
 
-          <div class="input-field-oat">
+          <div class="input-field">
             <p class="input-label">OAT</p>
             <input placeholder="°C" id="oat-cruise" class="text-input">
             <p class="input-range">{-45;40}</p>
           </div>
 
-          <div class="input-field-vw">
+          <div class="input-field">
             <p class="input-label">W/V</p>
             <input placeholder="kts" id="vw-cruise" class="text-input">
             <p class="input-range">{-100;100}</p>
           </div>
 
-          <div class="input-field-cruise-mass">
+          <div class="input-field-bottom">
             <div>
-              <p class="input-label-cruise-mass">Cruise Mass</p>
+              <p class="input-label">Cruise Mass</p>
             </div>
             <input placeholder="lbs" id="cruise-mass" class="text-input">
             <p class="input-range">{2750;3800}</p>
@@ -280,16 +277,16 @@
         </div>
 
         <div class="output">
-          <div class="label-area">
+          <div class="result-label-area">
             AEO Gear Up
           </div>
-          <div class="label-area-right">
+          <div class="result-label-area-right">
             ROC
           </div>
           
           <div class="split-results">
 
-            <div class="result" id="aeo-gear-up-cruise"></div>
+            <div class="result-left" id="aeo-gear-up-cruise"></div>
             <div class="note">(88 KIAS)</div>
             <div class="result-right" id="aeo-cruise-roc"></div>
 
@@ -297,16 +294,16 @@
         </div>
 
         <div class="output">
-          <div class="label-area">
+          <div class="result-label-area">
             OEI Gear Up
           </div>
-          <div class="label-area-right">
+          <div class="result-label-area-right">
             ROC
           </div>
           
           <div class="split-results">
 
-            <div class="result" id="oei-gear-up-cruise"></div>
+            <div class="result-left" id="oei-gear-up-cruise"></div>
             <div class="note">(88 KIAS)</div>
             <div class="result-right" id="oei-cruise-roc"></div>
 
@@ -323,15 +320,15 @@
             Landing
           </div>
 
-          <div class="input-field-elevation">
+          <div class="input-field-top">
             <div>
-              <p class="input-label-elevation">Elevation</p>
+              <p class="input-label">Elevation</p>
             </div>
             <input placeholder="feet" id="elevation-ldg" class="text-input">
             <p class="input-range">{0;5500}</p>
           </div>
 
-          <div class="input-field-oat">
+          <div class="input-field">
             <p class="input-label">OAT</p>
             <select class="drop-down-input" id="oat-ldg">
                 <option value="none" selected disabled hidden>°C</option>
@@ -394,7 +391,7 @@
             </select>
           </div>
 
-          <div class="input-field-vw">
+          <div class="input-field">
             <p class="input-label">W/V</p>
             <select class="drop-down-input"  id="vw-ldg">
                 <option value="0" selected disabled hidden>kt</option>
@@ -442,7 +439,7 @@
             </select>
           </div>
 
-          <div class="input-field-lm">
+          <div class="input-field-bottom">
             <div>
               <p class="input-label">LM</p>
             </div>
@@ -459,16 +456,16 @@
         </div>
 
         <div class="output">
-          <div class="label-area">
+          <div class="result-label-area">
             AEO Gear Down
           </div>
-          <div class="label-area-right">
+          <div class="result-label-area-right">
             ROC
           </div>
           
           <div class="split-results">
 
-            <div class="result" id="aeo-gear-down-ldg"></div>
+            <div class="result-left" id="aeo-gear-down-ldg"></div>
             <div class="note">(78 KIAS)</div>
             <div class="result-right" id="aeo-gear-down-ldg-roc"></div>
 
@@ -476,17 +473,17 @@
         </div>
 
         <div class="output">
-          <div class="label-area">
+          <div class="result-label-area">
             AEO Gear Up
           </div>
           
-          <div class="label-area-right">
+          <div class="result-label-area-right">
             ROC
           </div>
 
           <div class="split-results">
 
-            <div class="result" id="aeo-gear-up-ldg"></div>
+            <div class="result-left" id="aeo-gear-up-ldg"></div>
             <div class="note">(88 KIAS)</div>
             <div class="result-right" id="aeo-gear-up-ldg-roc"></div>
 
@@ -495,16 +492,16 @@
         </div>
 
         <div class="output">
-          <div class="label-area">
+          <div class="result-label-area">
             OEI Gear Up
           </div>
-          <div class="label-area-right">
+          <div class="result-label-area-right">
             ROC
           </div>
           
           <div class="split-results">
 
-            <div class="result" id="oei-gear-up-ldg"></div>
+            <div class="result-left" id="oei-gear-up-ldg"></div>
             <div class="note">(88 KIAS)</div>
             <div class="result-right" id="oei-gear-up-ldg-roc"></div>
 

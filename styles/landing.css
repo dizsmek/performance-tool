@@ -1,5 +1,3 @@
-
-
 .input2, .right-section {
   height: 150px; 
 }
@@ -41,11 +39,17 @@
   margin-bottom: 54px;
 }
 
-.output1, .output2, .output3 {
-  flex: 1;
+.runway-analysis {
   position: relative;
-  height: 64px;
-  border: solid 2px white;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin-left: 30px;
+  padding-left: 50px;
+  padding-top: 30px;
+  height: 130px;
+  position: relative;
+  border: solid 2px rgb(96, 96, 96);
   border-top-right-radius: 15px;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
@@ -54,29 +58,61 @@
 }
 
 
-.input-field-lda, .input-field-oat, .input-field-landing-mass {
+.fr-distance {
   display: flex;
-  margin-top: 17px;
-  margin-left: 5px;
-  margin-bottom: 5px;
-  margin-right: 5px;
+  padding-top: 4px;
+  padding-left: 4px;
+  justify-content: left;
+  position: relative;
+  left: -2px;
+  height: 24px;
+  background-color: rgb(97, 139, 253);
+  opacity: 0.5;
+  border: 1px solid rgb(73, 103, 183);
+  width: 420px;
+
 }
 
-
-.input-field-slope, .input-field-contamination, .input-field-elevation, .input-field-vw {
-  display: flex;
-  margin-top: 20px;
-  margin-right: 5px;
-  margin-left: 5px;
+.ldg-distance {
+  width: 212px;
+  background-color: rgb(130, 175, 130);
+  border: 1px solid rgb(78, 104, 78);
 }
 
+.runway-value {
+  white-space: nowrap;
+}
 
-.input-label-elevation{
+.runway {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-left: 1px solid rgb(67, 67, 67);
+}
+
+.lda {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  width: 600px;
+  background-color: black;
+  border: 2px solid white;
+  height: 50px;
+}
+
+.lda-value {
+  position: absolute;
+  top: -18px;
+  right: 4px;
+}
+
+.input-label-rp, .drop-down-label-rp {
+  width: 70px;
   margin-top: 5px;
   margin-bottom: 5px;
   margin-left: 10px;
   margin-right: 10px;
-  width: 52px;
+  white-space: nowrap;
 }
-
 

@@ -32,6 +32,7 @@ applyRangeValidation(document.getElementById('tom'), 2750, 3800);
 
 var oatDropdown = document.getElementById('oat');
 var vwDropdown = document.getElementById('vw');
+var contaminationDropdown = document.getElementById('contamination');
 
 // Attach event listeners to detect changes
 oatDropdown.addEventListener('change', function() {
@@ -41,6 +42,11 @@ oatDropdown.addEventListener('change', function() {
 vwDropdown.addEventListener('change', function() {
   vw.style.backgroundColor = 'lightgreen';
 });   
+
+contaminationDropdown.addEventListener('change', function() {
+  contamination.style.backgroundColor = 'lightgreen';
+});   
+
 
 function calculateTODR(elevation, oat, tom, vw, contamination, slope) {
 
@@ -227,7 +233,7 @@ function calculate() {
   clearwayValueResultElement.innerText = "CWY= " + clearwayValue + " m";
 
 
-  
+  console.log(dasw);
 }
 
 

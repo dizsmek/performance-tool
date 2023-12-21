@@ -31,6 +31,7 @@ applyRangeValidation(document.getElementById('lm'), 2750, 3800);
 
 var oatDropdown = document.getElementById('oat');
 var vwDropdown = document.getElementById('vw');
+var contaminationDropdown = document.getElementById('contamination');
 
 // Attach event listeners to detect changes
 oatDropdown.addEventListener('change', function() {
@@ -41,6 +42,9 @@ vwDropdown.addEventListener('change', function() {
   vw.style.backgroundColor = 'lightgreen';
 });    
 
+contaminationDropdown.addEventListener('change', function() {
+  contamination.style.backgroundColor = 'lightgreen';
+}); 
 
 
 
@@ -82,6 +86,11 @@ function calculateRemainingStoppingDistance (ldr, lda) {
   return remainingStoppingDistance;
 }
 
+function calculateLdaValue (lda) {
+  const ldaValue = lda;
+  return ldaValue;
+}
+
 
 
 function calculate() {
@@ -108,6 +117,8 @@ function calculate() {
   const factoredRunwayDistance = calculateFactoredRunwayDistance(lda);
 
   const remainingStoppingDistance = calculateRemainingStoppingDistance(lda, ldr);
+  
+  const ldaValue = calculateLdaValue (lda);
 
 
 
@@ -117,9 +128,13 @@ function calculate() {
 
   const remainingStoppingDistanceResultElement = document.getElementById("remaining-stopping-distance");
 
+  const ldaValueResultElement = document.getElementById("lda-value")
+
+
 
   ldrResultElement.innerText = ldr + " m";
   factoredRunwayDistanceResultElement.innerText = factoredRunwayDistance + " m";
   remainingStoppingDistanceResultElement.innerText = remainingStoppingDistance + " m";
+  ldaValueResultElement.innerText = ldaValue + " m";
 
 }

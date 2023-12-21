@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="../styles/styles.css" />
+    <link rel="stylesheet" type="text/css" href="../styles/fuel.css" />
+    <title>Fuel</title>
+  </head>
+
+  <body>
+    <header class="header">Piper PA-44-180 Seminole Performance Tool</header>
+
+
+      <nav class="navigation-bar">
+        <div class="links">
+          <div class="link-section">
+            <a href="#" class="link">General</a>
+          </div>
+          <div class="link-section">
+            <a href="02-take-off.html" class="link">Take-off</a>
+          </div>
+          <div class="link-section">
+            <a href="03-gradients.html" class="link" target="_blank">Gradients</a>
+          </div>  
+          <div class="link-section">
+            <a href="04-landing.html" class="link" target="_blank">Landing</a>
+          </div>
+          <div class="link-section">
+            <a href="05-fuel.html" class="link">Fuel</a>
+          </div>
+        </div>
+      </nav>  
+      
+      <div class="notes">
+        <p class="read-before-use">Read before use:</p>
+        <p class="instructions">The software calculates the total amount as determined by EU OPS AMC2 CAT.OP.MPA.181 (Basic Fuel Scheme w/o variations). Final reserve and additional fuel are calculated according to 55% power setting fuel flow. The fuel flow unit is USGPH/engine. Headwind is (+), tailwind is (-).</p>
+        <p class="instructions">In case of Power Setting 55% and altitude greater than 11000' check the chart in the POH.</p>
+        <p class="instructions">In case of Power Setting 65% and altitude greater than 6000' check the chart in the POH.</p>
+        <p class="instructions">In case of Power Setting 75% and altitude greater than 3000' check the chart in the POH.</p>
+      </div>
+
+      <div class="interface">
+
+        <div class="input-section-fuel">
+
+          <div class="left-section">
+
+            <div class="input1">
+              <div class="label-area">
+                Power Setting & Fuel
+              </div>
+    
+              <div class="input-field-top">
+                <div>
+                  <p class="input-label-fuel">Power %</p>
+                </div>
+                <select class="drop-down-input" id="ps">
+                  <option value="none">%</option>
+                  <option value="55">55%</option>
+                  <option value="65">65%</option>
+                  <option value="75">75%</option>
+                </select>
+              </div>
+    
+              <div class="input-field-bottom">
+                <div>
+                  <p class="input-label-fuel">RPM</p>
+                </div>
+                <select class="drop-down-input" id="rpm">
+                  <option value="none" selected disabled hidden>RPM</option>
+                  <option value="2100">2100</option>
+                  <option value="2200">2200</option>
+                  <option value="2300">2300</option>
+                  <option value="2400">2400</option>
+                  <option value="2500">2500</option>
+                </select>
+              </div>
+
+              <div class="input-field-bottom">
+                <div>
+                  <p class="input-label-fuel">Altitude</p>
+                </div>
+                <input placeholder="feet" id="altitude" class="text-input">
+                <p class="input-range">{0;15000}</p>
+              </div>
+
+              <div class="input-field-bottom">
+                <p class="input-label-fuel">OAT</p>
+                <input placeholder="°C" id="oat-altitude" class="text-input">
+                <p class="input-range">{-45;40}</p>
+              </div>
+  
+            </div>
+
+            
+
+            <div class="input-fuel">
+    
+              <div class="input-field-fuel">
+                <div>
+                  <p class="input-label-fuel">Taxi</p>
+                </div>
+                <input placeholder="USG" id="taxi" class="text-input">
+              </div>
+
+              <div class="input-field-fuel">
+                <div>
+                  <p class="input-label-fuel">Fin. res.</p>
+                </div>
+                <input placeholder="min" id="fin-res" class="text-input">
+              </div>
+
+              <div class="input-field-fuel">
+                <div>
+                  <p class="input-label-fuel">Additional</p>
+                </div>
+                <input placeholder="min" id="additional" class="text-input">
+              </div>
+
+              <div class="input-field-fuel">
+                <div>
+                  <p class="input-label-fuel">Extra</p>
+                </div>
+                <input placeholder="USG" id="extra" class="text-input">
+              </div>
+
+  
+            </div>
+
+          </div>
+
+          
+  
+          <div class="input">
+            <div class="label-area">
+              Trip
+            </div>
+
+            <div class="input-field-top">
+              <div>
+                <p class="input-label-trip">Dep. AD Elev.</p>
+              </div>
+              <input placeholder="feet" id="dep-ad-elevation" class="text-input">
+              <p class="input-range">{0;4000}</p>
+            </div>
+
+            <div class="input-field">
+              <p class="input-label-trip"> Dep. AD OAT</p>
+              <select class="drop-down-input" id="depadoat">
+                  <option value="none" selected disabled hidden>°C</option>
+                  <option>40</option>
+                  <option>39</option>
+                  <option>38</option>
+                  <option>37</option>
+                  <option>36</option>
+                  <option>35</option>
+                  <option>34</option>
+                  <option>33</option>
+                  <option>32</option>
+                  <option>31</option>
+                  <option>30</option>
+                  <option>29</option>
+                  <option>28</option>
+                  <option>27</option>
+                  <option>26</option>
+                  <option>25</option>
+                  <option>24</option>
+                  <option>23</option>
+                  <option>22</option>
+                  <option>21</option>
+                  <option>20</option>
+                  <option>19</option>
+                  <option>18</option>
+                  <option>17</option>
+                  <option>16</option>
+                  <option>15</option>
+                  <option>14</option>
+                  <option>13</option>
+                  <option>12</option>
+                  <option>11</option>
+                  <option>10</option>
+                  <option>9</option>
+                  <option>8</option>
+                  <option>7</option>
+                  <option>6</option>
+                  <option>5</option>
+                  <option>4</option>
+                  <option>3</option>
+                  <option>2</option>
+                  <option>1</option>
+                  <option>0</option>
+                  <option>-1</option>
+                  <option>-2</option>
+                  <option>-3</option>
+                  <option>-4</option>
+                  <option>-5</option>
+                  <option>-6</option>
+                  <option>-7</option>
+                  <option>-8</option>
+                  <option>-9</option>
+                  <option>-10</option>
+                  <option>-11</option>
+                  <option>-12</option>
+                  <option>-13</option>
+                  <option>-14</option>
+                  <option>-15</option>
+              </select>
+            </div>
+
+            <div class="input-field">
+              <div>
+                <p class="input-label-trip">Trip Distance</p>
+              </div>
+              <input placeholder="NGM" id="trip-distance" class="text-input">
+            </div>
+
+            <div class="input-field">
+              <p class="input-label-trip">Avg. TAS</p>
+              <input placeholder="kts" id="trip-tas" class="text-input">
+            </div>
+
+            <div class="input-field">
+              <p class="input-label-trip">Avg. Trip W/V</p>
+              <input placeholder="kts" id="trip-vw" class="text-input">
+              <p class="input-range">{-100;100}</p>
+            </div>
+  
+            <div class="input-field">
+              <div>
+                <p class="input-label-trip">Cruise Alt</p>
+              </div>
+              <input placeholder="feet" id="cruise-fl" class="text-input">
+              <p class="input-range">{0;15000}</p>
+            </div>
+  
+            <div class="input-field">
+              <p class="input-label-trip">Cruise OAT</p>
+              <input placeholder="°C" id="oat-cruise" class="text-input">
+              <p class="input-range">{-45;40}</p>
+            </div>
+
+            <div class="input-field">
+              <div>
+                <p class="input-label-trip">Dest. AD Elev.</p>
+              </div>
+              <input placeholder="feet" id="dest-ad-elevation" class="text-input">
+              <p class="input-range">{0;4000}</p>
+            </div>
+
+            <div class="input-field-bottom">
+              <p class="input-label-trip"> Dest. AD OAT</p>
+              <select class="drop-down-input" id="destadoat">
+                  <option value="none" selected disabled hidden>°C</option>
+                  <option>40</option>
+                  <option>39</option>
+                  <option>38</option>
+                  <option>37</option>
+                  <option>36</option>
+                  <option>35</option>
+                  <option>34</option>
+                  <option>33</option>
+                  <option>32</option>
+                  <option>31</option>
+                  <option>30</option>
+                  <option>29</option>
+                  <option>28</option>
+                  <option>27</option>
+                  <option>26</option>
+                  <option>25</option>
+                  <option>24</option>
+                  <option>23</option>
+                  <option>22</option>
+                  <option>21</option>
+                  <option>20</option>
+                  <option>19</option>
+                  <option>18</option>
+                  <option>17</option>
+                  <option>16</option>
+                  <option>15</option>
+                  <option>14</option>
+                  <option>13</option>
+                  <option>12</option>
+                  <option>11</option>
+                  <option>10</option>
+                  <option>9</option>
+                  <option>8</option>
+                  <option>7</option>
+                  <option>6</option>
+                  <option>5</option>
+                  <option>4</option>
+                  <option>3</option>
+                  <option>2</option>
+                  <option>1</option>
+                  <option>0</option>
+                  <option>-1</option>
+                  <option>-2</option>
+                  <option>-3</option>
+                  <option>-4</option>
+                  <option>-5</option>
+                  <option>-6</option>
+                  <option>-7</option>
+                  <option>-8</option>
+                  <option>-9</option>
+                  <option>-10</option>
+                  <option>-11</option>
+                  <option>-12</option>
+                  <option>-13</option>
+                  <option>-14</option>
+                  <option>-15</option>
+              </select>
+            </div>
+
+          </div>
+
+          <div class="right-section">
+
+            <div class="altn">
+
+              <div class="label-area">
+                Alternate
+              </div>
+  
+  
+              <div class="input-field-top">
+                <div>
+                  <p class="input-label-trip">Altn. Distance</p>
+                </div>
+                <input placeholder="NGM" id="altn-distance" class="text-input">
+              </div>
+  
+              <div class="input-field-tas">
+                <p class="input-label-trip">Avg. TAS</p>
+                <input placeholder="kts" id="altn-tas" class="text-input">
+              </div>
+  
+              <div class="input-field">
+                <p class="input-label-trip">Avg. Trip W/V</p>
+                <input placeholder="kts" id="vw-altn" class="text-input">
+                <p class="input-range">{-100;100}</p>
+              </div>
+    
+              <div class="input-field">
+                <div>
+                  <p class="input-label-trip">Cruise Alt</p>
+                </div>
+                <input placeholder="feet" id="altn-fl" class="text-input">
+                <p class="input-range">{0;15000}</p>
+              </div>
+    
+              <div class="input-field">
+                <p class="input-label-trip">Cruise OAT</p>
+                <input placeholder="°C" id="oat-altn-cruise" class="text-input">
+                <p class="input-range">{-45;40}</p>
+              </div>
+  
+              <div class="input-field">
+                <div>
+                  <p class="input-label-trip">Altn. AD Elev.</p>
+                </div>
+                <input placeholder="feet" id="altn-ad-elevation" class="text-input">
+                <p class="input-range">{0;4000}</p>
+              </div>
+  
+              <div class="input-field-bottom">
+                <p class="input-label-trip"> Altn. AD OAT</p>
+                <select class="drop-down-input" id="altnadoat">
+                    <option value="none" selected disabled hidden>°C</option>
+                    <option>40</option>
+                    <option>39</option>
+                    <option>38</option>
+                    <option>37</option>
+                    <option>36</option>
+                    <option>35</option>
+                    <option>34</option>
+                    <option>33</option>
+                    <option>32</option>
+                    <option>31</option>
+                    <option>30</option>
+                    <option>29</option>
+                    <option>28</option>
+                    <option>27</option>
+                    <option>26</option>
+                    <option>25</option>
+                    <option>24</option>
+                    <option>23</option>
+                    <option>22</option>
+                    <option>21</option>
+                    <option>20</option>
+                    <option>19</option>
+                    <option>18</option>
+                    <option>17</option>
+                    <option>16</option>
+                    <option>15</option>
+                    <option>14</option>
+                    <option>13</option>
+                    <option>12</option>
+                    <option>11</option>
+                    <option>10</option>
+                    <option>9</option>
+                    <option>8</option>
+                    <option>7</option>
+                    <option>6</option>
+                    <option>5</option>
+                    <option>4</option>
+                    <option>3</option>
+                    <option>2</option>
+                    <option>1</option>
+                    <option>0</option>
+                    <option>-1</option>
+                    <option>-2</option>
+                    <option>-3</option>
+                    <option>-4</option>
+                    <option>-5</option>
+                    <option>-6</option>
+                    <option>-7</option>
+                    <option>-8</option>
+                    <option>-9</option>
+                    <option>-10</option>
+                    <option>-11</option>
+                    <option>-12</option>
+                    <option>-13</option>
+                    <option>-14</option>
+                    <option>-15</option>
+                </select>
+              </div>
+      
+            </div>
+
+            <button class="calculate-button" onclick="calculate()">
+              CALCULATE
+            </button>
+  
+          </div> 
+            
+
+        </div>
+
+        <div class="output-section-fuel">
+
+          <div class="output">
+
+            <div class="output-ff">
+              <div class="output-label-fuel">
+                Fuel Flow
+              </div>
+              
+              <div class="result-ff" id="fuel-flow"></div>
+
+              <div class="output-label-fuel">
+                MAP
+              </div>
+              
+              <div class="result-map" id="map"></div>
+
+            </div>
+
+            <div class="fuels">
+              <div class="result-label">Taxi</div>
+              <div class="fuel-result" id="taxi-result"></div> 
+            </div>
+            
+            <div class="fuels">
+  
+              <div class="result-label-trip">Climb</div>
+              <div class="fuel-result" id="climb-result"></div>
+  
+              <div class="result-label-trip">Cruise</div>
+              <div class="fuel-result" id="cruise-result"></div>
+  
+              <div class="result-label-trip">Descent</div>
+              <div class="fuel-result" id="descent-result"></div>
+  
+            </div>
+  
+            <div class="fuels">
+              <div class="result-label">Trip Total</div>
+              <div class="fuel-result" id="trip-result"></div> 
+            </div>
+  
+            <div class="fuels">
+              <div class="result-label">Contingency (5%)</div>
+              <div class="fuel-result" id="cont-result"></div> 
+            </div>
+  
+            <div class="fuels">
+              <div class="result-label">Alternate</div>
+              <div class="fuel-result" id="altn-result"></div> 
+            </div>
+  
+            <div class="fuels">
+              <div class="result-label">Final Reserve</div>
+              <div class="fuel-result" id="fin-res-result"></div> 
+            </div>
+  
+            <div class="fuels">
+              <div class="result-label">Additional</div>
+              <div class="fuel-result" id="additional-result"></div> 
+            </div>
+  
+            <div class="fuels">
+              <div class="result-label">Extra</div>
+              <div class="fuel-result" id="extra-result"></div> 
+            </div>
+  
+            <div class="total">
+              <div class="total-result-label">Total</div>
+              <div class="total-result" id="total-result"></div> 
+            </div>
+  
+
+
+          </div>
+
+          <div class="output-distance">
+
+            <div class="fuels">
+              <div class="result-label">Climb Dist.</div>
+              <div class="fuel-result" id="climb-distance-result"></div>
+            </div>
+            <div class="fuels">
+              <div class="result-label">Cruise Dist.</div>
+              <div class="fuel-result" id="cruise-distance-result"></div>
+            </div>
+            <div class="fuels">
+              <div class="result-label">Descent Dist.</div>
+              <div class="fuel-result" id="descent-distance-result"></div>
+            </div>
+
+
+          </div>
+
+        </div>
+
+      </div>
+
+    <script src="../scripts/fuel.js"></script>
+  </body>
+</html>

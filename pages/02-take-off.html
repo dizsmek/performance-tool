@@ -10,7 +10,7 @@
 
   <body>
     <header class="header">Piper PA-44-180 Seminole Performance Tool</header>
-    <div class="app-wrapper">
+
 
       <nav class="navigation-bar">
         <div class="links">
@@ -24,13 +24,10 @@
             <a href="03-gradients.html" class="link" target="_blank">Gradients</a>
           </div>  
           <div class="link-section">
-            <a href="05-landing.html" class="link" target="_blank">Landing</a>
+            <a href="04-landing.html" class="link" target="_blank">Landing</a>
           </div>
           <div class="link-section">
-            <a href="#" class="link" target="_blank">Fuel</a>
-          </div>
-          <div class="link-section">
-            <a href="#" class="link" target="_blank">Mass</a>
+            <a href="05-fuel.html" class="link" target="_blank">Fuel</a>
           </div>
         </div>
       </nav>  
@@ -43,87 +40,85 @@
       <div class="interface">
 
         <div class="input-section">
+
           <div class="input1">
 
             <div class="label-area">
               Runway Parameters
             </div>
-              
-            <div class="input-field">
-  
-              <div class="input-field-tora">
-                <div>
-                  <p class="input-label">TORA</p>
-                </div>
-        
-                <div>
-                  <input class="text-input" placeholder="meters" id="tora" />
-                </div>
-  
-                <div>
-                  <p class="input-range">{500;4000}</p>
-                </div>
-  
+
+            <div class="input-field-top">
+              <div>
+                <p class="input-label-rp">TORA</p>
               </div>
-  
-              <div class="input-field-toda">
-  
-                <div>
-                  <p class="input-label">TODA</p>
-                </div>
-  
-                <div>
-                  <input class="text-input" placeholder="meters" id="toda" />
-                </div>
-  
-                <div>
-                  <p class="input-range">{500;4000}</p>
-                </div>
-                
+      
+              <div>
+                <input class="text-input" placeholder="meters" id="tora" />
               </div>
-  
-              <div class="input-field-asda">
-  
-                <div>
-                  <p class="input-label">ASDA</p>
-                </div>
-                
-                <div>
-                  <input class="text-input" placeholder="meters"  id="asda" />
-                </div>
-  
-                <div>
-                  <p class="input-range">{500;4000}</p>
-                </div>
-                
+
+              <div>
+                <p class="input-range">{500;4000}</p>
               </div>
-  
-              <div class="input-field-slope">
-                <div>
-                  <p class="input-label">Slope</p>
-                </div>
-                <input placeholder="%" id="slope" class="text-input">
-                <p class="input-range">{0;2}</p>
-              </div>
-  
-              <div class="input-field-contamination">
-  
-                <div>
-                  <p class="drop-down-label">Contamination</p>
-                </div>
-  
-                <div>
-                  <select class="drop-down-input" id="contamination">
-                    <option>Dry</option>
-                    <option>Wet</option>
-                    <option>Dry, grass</option>
-                    <option>Wet, grass</option>
-                  </select>
-                </div>
-                
-              </div>
-    
+
             </div>
+
+            <div class="input-field">
+
+              <div>
+                <p class="input-label-rp">TODA</p>
+              </div>
+
+              <div>
+                <input class="text-input" placeholder="meters" id="toda" />
+              </div>
+
+              <div>
+                <p class="input-range">{500;4000}</p>
+              </div>
+              
+            </div>
+
+            <div class="input-field">
+
+              <div>
+                <p class="input-label-rp">ASDA</p>
+              </div>
+              
+              <div>
+                <input class="text-input" placeholder="meters"  id="asda" />
+              </div>
+
+              <div>
+                <p class="input-range">{500;4000}</p>
+              </div>
+              
+            </div>
+
+            <div class="input-field">
+              <div>
+                <p class="input-label-rp">Slope</p>
+              </div>
+              <input placeholder="%" id="slope" class="text-input">
+              <p class="input-range">{0;2}</p>
+            </div>
+
+            <div class="input-field-bottom">
+
+              <div>
+                <p class="drop-down-label-rp">Contamination</p>
+              </div>
+
+              <div>
+                <select class="drop-down-input" id="contamination">
+                  <option>Dry</option>
+                  <option>Wet</option>
+                  <option>Dry, grass</option>
+                  <option>Wet, grass</option>
+                </select>
+              </div>
+              
+            </div>
+              
   
           </div>
   
@@ -132,7 +127,7 @@
               Atmosphere
             </div>
   
-            <div class="input-field-oat">
+            <div class="input-field-top">
               <p class="input-label">OAT</p>
               <select class="drop-down-input" id="oat">
                   <option value="none" selected disabled hidden>°C</option>
@@ -195,7 +190,7 @@
               </select>
             </div>
   
-            <div class="input-field-vw">
+            <div class="input-field">
               <p class="input-label">W/V</p>
               <select class="drop-down-input"  id="vw">
                   <option value="0" selected disabled hidden>kt</option>
@@ -243,9 +238,9 @@
               </select>
             </div>
             
-            <div class="input-field-elevation">
+            <div class="input-field-bottom">
               <div>
-                <p class="input-label-elevation">Elevation</p>
+                <p class="input-label">Elevation</p>
               </div>
               <input placeholder="feet" id="elevation" class="text-input">
               <p class="input-range">{0;4000}</p>
@@ -260,7 +255,7 @@
               Aircraft
             </div>
             
-            <div class="input-field-take-off-mass">
+            <div class="input-field-top">
               <div>
                 <p class="input-label">TOM</p>
               </div>
@@ -275,11 +270,12 @@
           </button>
 
           </div>
+
         </div>
 
         <div class="output-section">
           <div class="output1">
-            <div class="label-area">
+            <div class="result-label-area">
               Factored Runway Distance
             </div>
             
@@ -287,7 +283,7 @@
           </div>
   
           <div class="output2">
-            <div class="label-area">
+            <div class="result-label-area">
               TODR
             </div>
             
@@ -295,7 +291,7 @@
           </div>
   
           <div class="output3">
-            <div class="label-area">
+            <div class="result-label-area">
               ASDR
             </div>
             
@@ -303,8 +299,8 @@
           </div>
           
           <div class="output4">
-            <div class="label-area">
-              Remaining Stopping Distance
+            <div class="result-label-area">
+              Stop Margin
             </div>
             
             <div class="result" id="remaining-stopping-distance"></div>
@@ -312,7 +308,7 @@
         </div>
 
         <div class="runway-analysis">
-          <div class="label-area">Runway Analysis</div>
+          <div class="result-label-area">Runway Analysis</div>
 
           <div class="to-distance" id="to-distance">TODR</div>
 
@@ -333,19 +329,17 @@
               
             </div>
           
-
-
+          
           </div>
 
           <div class="as-distance" id="as-distance">ASDR</div>
-
-          
 
         </div>
 
       </div>
   
-    </div>
+
     <script src="../scripts/take-off.js"></script>
   </body>
 </html>
+
