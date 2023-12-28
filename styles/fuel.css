@@ -103,7 +103,7 @@
   font-weight: bold;
 }
 
-.output {
+.output, .output-masses {
   border: solid 2px rgb(96, 96, 96);
   border-top-right-radius: 15px;
   border-bottom-left-radius: 15px;
@@ -115,6 +115,10 @@
   flex: 1;
   flex-direction: column;
 
+}
+
+.output-masses {
+  height: 316px;
 }
 
 .output-distance {

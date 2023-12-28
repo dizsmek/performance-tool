@@ -112,7 +112,6 @@ function calculateRlmValue (factoredRunwayDistance,elevation, oat, vw, contamina
 
   const dlam = ldr1 - ldr2;
 
-  console.log(factoredRunwayDistance1, dlaw, ldr1, dlah, dlat, dlam);
 
   if (dlam >= 0) {
 
@@ -128,10 +127,34 @@ function calculateRlmValue (factoredRunwayDistance,elevation, oat, vw, contamina
 
 }
 
+function changeFrDistanceWidth(lda, factoredRunwayDistance) {
+
+  var frDistance = document.getElementById("fr-distance");
+
+    
+  var newWidth = (factoredRunwayDistance / lda) * 600 + "px";
+  frDistance.style.width = newWidth;
+
+  console.log(lda, factoredRunwayDistance, newWidth);
+    
+}
+
+
+function changeLdrWidth (lda, ldr) {
+
+  var ldgDistance = document.getElementById("ldg-distance");
+
+    
+  var newWidth = (ldr / lda) * 600 + "px";
+  ldgDistance.style.width = newWidth;
+
+
+}
+
 function saveResult(rlmValue) {
   const fllmResult = rlmValue;
   localStorage.setItem('fllmResult', fllmResult);
-  console.log(fllmResult);
+  
 }
 
 
@@ -167,6 +190,10 @@ function calculate() {
 
   const fllmResult = saveResult (rlmValue);
 
+  const frDistanceWidth = changeFrDistanceWidth (lda, factoredRunwayDistance);
+
+  const ldrWidth = changeLdrWidth (lda, ldr);
+
 
 
   const ldrResultElement = document.getElementById("ldr");
@@ -188,3 +215,5 @@ function calculate() {
   rlmValueResultElement.innerText = rlmValue + " lbs";
 
 }
+
+

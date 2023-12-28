@@ -69,14 +69,17 @@
   background-color: rgb(97, 139, 253);
   opacity: 0.5;
   border: 1px solid rgb(73, 103, 183);
-  width: 420px;
+  transition: width 0.5s;
+  width: 0;
+  white-space: nowrap;
 
 }
 
 .ldg-distance {
-  width: 212px;
   background-color: rgb(130, 175, 130);
   border: 1px solid rgb(78, 104, 78);
+  transition: width 0.5s;
+  width: 0;
 }
 
 .runway-value {

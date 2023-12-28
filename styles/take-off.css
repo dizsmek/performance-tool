@@ -75,21 +75,21 @@
 .stopway {
   position: absolute;
   top: 18px;
+  left: -2px;
   display: flex;
   justify-content: right;
   align-items: center;
-  padding-right: 10px;
   background-color: rgb(194, 121, 132);
   height: 50px;
-  width: 70px;
+  width: 0;
+  transition: width 0.5s;
   border: 2px solid rgb(127, 72, 80);
 }
 
 .clearway {
   position: relative;
-  padding-right: 6px;
-  padding-top: 2px;
-  width: 110px;
+  width: 0;
+  transition: width 0.5s;
   height: 90px;
   background-color: rgb(199, 199, 112);
   border: 2px solid rgb(152, 152, 86);
@@ -97,7 +97,14 @@
 
 .clearway-value {
   position: absolute;
-  left: 24px;
+  top: -18px;
+  white-space: nowrap;
+}
+
+.stopway-value {
+  position: absolute;
+  bottom: -18px;
+  white-space: nowrap;
 }
 
 .runway-value {
@@ -111,16 +118,17 @@
   justify-content: left;
   height: 24px;
   border-left: 2px solid white;
+  transition: width 0.5s;
 }
 
 .to-distance {
-  width: 233px;
+  width: 0;
   background-color: rgb(130, 175, 130);
   border: 1px solid rgb(78, 104, 78);
 }
 
 .as-distance {
-  width: 260px;
+  width: 0;
   background-color: rgb(239, 158, 158);
   border: 1px solid rgb(143, 96, 96);
 }
@@ -136,7 +144,9 @@
   background-color: rgb(97, 139, 253);
   opacity: 0.5;
   border: 1px solid rgb(73, 103, 183);
-  width: 550px;
+  width: 0;
+  transition: width 0.5s;
+  white-space: nowrap;
 
 }
 
