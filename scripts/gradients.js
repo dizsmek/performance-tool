@@ -225,6 +225,115 @@ function calculateoeiGearUpLdg (oeiGearUpLdgRoc, vwldg, elevationldg) {
 }
 
 
+function calculatePltomAeo (aeoToGradient, elevationto, oatto,vwto) {
+
+  const pltomAeoRoc1 = aeoToGradient / 0.77 * (88 * (1 + 0.00002 * elevationto) - vwto) * 6080 / 6000;
+
+  const dauh = 0.000002 * Math.pow(elevationto, 2) - 0.1255 * elevationto + 1682;
+
+  const daut = (oatto + 15) * (-0.000000022 * Math.pow(elevationto, 2) + 0.000651 * elevationto - 13.042);
+
+  const pltomAeoRoc2 = dauh + daut;
+  
+
+  const daum = pltomAeoRoc1 - pltomAeoRoc2;
+
+  if (daum <= 0) {
+    const pltomAeo = 3800;
+    return pltomAeo;
+    
+  } else {
+    const pltomAeo = Math.round(3800 - (daum / (0.00000015 * Math.pow((dauh + daut), 2) + 0.000018 * (dauh + daut) + 0.366)));
+    return pltomAeo;
+  }
+  
+}
+
+
+function calculatePltomOei (elevationto, oatto, vwto) {
+
+  const pltomOeiRoc1 = 0.75 * (88 * (1 + 0.00002 * (elevationto + 1500)) - vwto) * 6080 / 6000;
+
+  const douh = -0.0000014 * Math.pow((elevationto + 1500), 2) - 0.0426 * (elevationto + 1500) + 331;
+
+  const dout = (oatto + 12) * (0.000000037 * Math.pow((elevationto + 1500), 2) - 0.000157 * (elevationto + 1500) - 4.682);
+
+  const pltomOeiRoc2 = douh + dout;
+
+  const doum = pltomOeiRoc1 - pltomOeiRoc2;
+  
+
+  if (doum <= 0) {
+    const pltomOei = 3800;
+    return pltomOei;
+  } else {
+    const pltomOei = Math.round(3800 - (doum / (-0.0000001 * Math.pow((douh + dout), 2) + 0.000267 * (douh + dout) + 0.246)));
+    return pltomOei;
+  }
+
+}
+
+function calculatePllmAeo (aeoLdgGradient, elevationldg, oatldg, vwldg) {
+
+  const pllmAeoRoc1 = aeoLdgGradient * (88 * (1 + 0.00002 * elevationldg) - vwldg) * 6080 / 6000;
+
+  const dadh = 0.0000015 * Math.pow(elevationldg, 2) - 0.1267 * elevationldg + 1541;
+
+  const dadt = (oatldg + 15) * (-0.000000021 * Math.pow(elevationldg, 2) + 0.000485 * elevationldg - 11.45);
+
+  const pllmAeoRoc2 = dadh + dadt;
+
+  const dadm = pllmAeoRoc1 - pllmAeoRoc2;
+  console.log(pllmAeoRoc1, dadh, dadt, pllmAeoRoc2, dadm);
+
+  if (dadm <= 0) {
+    const pllmAeo = 3800;
+    return pllmAeo;
+  } else {
+    const pllmAeo = Math.round(3800 - (dadm / (0.000000033 * Math.pow((dadh + dadt), 2) + 0.000193 * (dadh + dadt) + 0.339)));
+    return pllmAeo;
+  }
+
+}
+
+function calculatePllmOei (elevationldg, oatldg, vwldg) {
+
+  const pllmOeiRoc1 = 0.75 * (88 * (1 + 0.00002 * (elevationldg + 1500)) - vwldg) * 6080 / 6000;
+
+  const douh = -0.0000014 * Math.pow((elevationldg + 1500), 2) - 0.0426 * (elevationldg + 1500) + 331;
+
+  const dout = (oatldg + 12) * (0.000000037 * Math.pow((elevationldg + 1500), 2) - 0.000157 * (elevationldg + 1500) - 4.682);
+
+  const pllmOeiRoc2 = douh + dout;
+
+  const doum = pllmOeiRoc1 - pllmOeiRoc2;
+
+  if (doum <= 0) {
+    const pllmOei = 3800;
+    return pllmOei;
+  } else {
+    const pllmOei = Math.round(3800 - (doum / (-0.0000001 * Math.pow((douh + dout), 2) + 0.000267 * (douh + dout) + 0.246)));
+    return pllmOei;
+  }
+
+}
+
+function saveResultTo(pltomAeo, pltomOei) {
+  const pltomAeoResult = pltomAeo;
+  localStorage.setItem('pltomAeoResult', pltomAeoResult);
+  const pltomOeiResult = pltomOei;
+  localStorage.setItem('pltomOeiResult', pltomOeiResult);
+  
+}
+
+function saveResultLdg(pllmAeo, pllmOei) {
+  const pllmAeoResult = pllmAeo;
+  localStorage.setItem('pllmAeoResult', pllmAeoResult);
+  const pllmOeiResult = pllmOei;
+  localStorage.setItem('pllmOeiResult', pllmOeiResult);
+}
+
+
 
 
 function calculateTo () {
@@ -232,6 +341,13 @@ function calculateTo () {
   const oatto = +document.getElementById("oat-to").value;
   const vwto = +document.getElementById("vw-to").value;
   const tom = +document.getElementById("tom").value;
+  let aeoToGradient = +document.getElementById("aeo-to-gradient").value;
+
+  if (aeoToGradient === 0) {
+    aeoToGradient = 4;
+  } else {
+    aeoToGradient = aeoToGradient; 
+  }
 
   const aeoGearDownToRoc = calculateaeoGearDownToRoc(elevationto, oatto, tom);
   const aeoGearDownTo = calculateaeoGearDownTo(aeoGearDownToRoc, vwto, elevationto);
@@ -241,6 +357,11 @@ function calculateTo () {
 
   const oeiGearUpToRoc = calculateoeiGearUpToRoc(elevationto, oatto, tom);
   const oeiGearUpTo = calculateoeiGearUpTo(oeiGearUpToRoc, vwto, elevationto);
+
+  const pltomAeo = calculatePltomAeo (aeoToGradient, elevationto, oatto,vwto);
+  const pltomOei = calculatePltomOei (elevationto, oatto, vwto);
+
+  const pltomResult = saveResultTo (pltomAeo, pltomOei);
 
 
   const aeoGearDownToRocResultElement = document.getElementById("aeo-gear-down-to-roc");
@@ -252,6 +373,11 @@ function calculateTo () {
   const oeiGearUpToRocResultElement = document.getElementById("oei-gear-up-to-roc");
   const oeiGearUpToResultElement = document.getElementById("oei-gear-up-to");
 
+  const pltomAeoResultElement = document.getElementById("aeo-pltom");
+  const pltomOeiResultElement = document.getElementById("oei-pltom");
+
+
+
   aeoGearDownToRocResultElement.innerText = aeoGearDownToRoc + " fpm";
   aeoGearDownToResultElement.innerText = aeoGearDownTo + " %";
 
@@ -260,6 +386,9 @@ function calculateTo () {
 
   oeiGearUpToRocResultElement.innerText = oeiGearUpToRoc + " fpm";
   oeiGearUpToResultElement.innerText = oeiGearUpTo + " %";
+
+  pltomAeoResultElement.innerText = pltomAeo + " lbs";
+  pltomOeiResultElement.innerText = pltomOei + " lbs";
 
 }
 
@@ -297,6 +426,13 @@ function calculateLdg () {
   const oatldg = +document.getElementById("oat-ldg").value;
   const vwldg = +document.getElementById("vw-ldg").value;
   const lm = +document.getElementById("lm").value;
+  let aeoLdgGradient = +document.getElementById("aeo-ldg-gradient").value;
+
+  if (aeoLdgGradient === 0) {
+    aeoLdgGradient = 2.5;
+  } else {
+    aeoLdgGradient = aeoLdgGradient; 
+  }
 
   const aeoGearDownLdgRoc = calculateaeoGearDownLdgRoc(elevationldg, oatldg, lm);
   const aeoGearDownLdg = calculateaeoGearDownLdg(aeoGearDownLdgRoc, vwldg, elevationldg);
@@ -306,6 +442,11 @@ function calculateLdg () {
 
   const oeiGearUpLdgRoc = calculateoeiGearUpLdgRoc(elevationldg, oatldg, lm);
   const oeiGearUpLdg = calculateoeiGearUpLdg(oeiGearUpLdgRoc, vwldg, elevationldg);
+
+  const pllmAeo = calculatePllmAeo (aeoLdgGradient, elevationldg, oatldg, vwldg);
+  const pllmOei = calculatePllmOei (elevationldg, oatldg, vwldg);
+
+  const pllmResult = saveResultLdg (pllmAeo, pllmOei);
 
 
   const aeoGearDownLdgRocResultElement = document.getElementById("aeo-gear-down-ldg-roc");
@@ -317,6 +458,11 @@ function calculateLdg () {
   const oeiGearUpLdgRocResultElement = document.getElementById("oei-gear-up-ldg-roc");
   const oeiGearUpLdgResultElement = document.getElementById("oei-gear-up-ldg");
 
+  const pllmAeoResultElement = document.getElementById("aeo-pllm");
+  const pllmOeiResultElement = document.getElementById("oei-pllm");
+
+
+
   aeoGearDownLdgRocResultElement.innerText = aeoGearDownLdgRoc + " fpm";
   aeoGearDownLdgResultElement.innerText = aeoGearDownLdg + " %";
 
@@ -326,4 +472,6 @@ function calculateLdg () {
   oeiGearUpLdgRocResultElement.innerText = oeiGearUpLdgRoc + " fpm";
   oeiGearUpLdgResultElement.innerText = oeiGearUpLdg + " %";
 
+  pllmAeoResultElement.innerText = pllmAeo + " lbs";
+  pllmOeiResultElement.innerText = pllmOei + " lbs";
 }

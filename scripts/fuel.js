@@ -253,7 +253,7 @@ function calculateDescentFuel (destAdElevation, destAdOat, cruiseFl, cruiseOat) 
 
 function calculateCruiseDistance (tripDistance, climbDistance, descentDistance) {
 
-  const cruiseDistance = tripDistance - climbDistance - descentDistance;
+  const cruiseDistance = Math.round((tripDistance - climbDistance - descentDistance) * 10) / 10;
 
   return cruiseDistance;
 }
@@ -302,6 +302,7 @@ function calculateAltnClimbFuel (destAdElevation, destAdOat, altnCruiseFl, altnC
   const dcftac = (altnCruiseOat + 15 + 0.002 * altnCruiseFl) * (0.0000062 * altnCruiseFl - 0.00418);
 
   const altnClimbFuel = Math.round((dcfhac + dcftac - dcfhdn - dcftdn) * 3.784 * 10) / 10;
+  console.log(altnClimbFuel);
   return altnClimbFuel;
 }
 
@@ -314,7 +315,6 @@ function calculateAltnClimbDistance (destAdElevation, destAdOat, altnCruiseFl, a
 
   const altnClimbDistance = Math.round (((dcdhac + dcdtac - dcdhdn - dcdtdn) * ((altnTas - altnVw ) / altnTas)) * 10) / 10;
   
-
   return altnClimbDistance;
 }
 
@@ -327,6 +327,7 @@ function calculateAltnDescentFuel (altnAdElevation, altnAdOat, altnCruiseFl, alt
   const ddftac = (altnCruiseOat + 15 + 0.002 * altnCruiseFl) * (0.0000007 * altnCruiseFl + 0.0002424);
 
   const altnDescentFuel = Math.round ((ddfhac + ddftac - ddfha - ddfta) * 3.784 * 10) / 10;
+  console.log(altnDescentFuel);
   return altnDescentFuel;
 
 }
@@ -356,14 +357,17 @@ function calculateAltnCruiseFuel (powerSetting, altnCruiseDistance, altnTas, alt
   if (powerSetting === 55) {
     const altnCruiseFuel = Math.round (((8.7 * 2 * 3.784 * altnCruiseDistance) / (altnTas - altnVw)) * 10) / 10;
 
+    console.log(altnCruiseFuel);
     return altnCruiseFuel;
   } else if (powerSetting === 65) {
     const altnCruiseFuel = Math.round (((10.2 * 2 * 3.784 * altnCruiseDistance) / (altnTas - altnVw)) * 10) / 10;
 
+    console.log(altnCruiseFuel);
     return altnCruiseFuel;
   } else if (powerSetting === 75) {
     const altnCruiseFuel = Math.round (((11.7 * 2 * 3.784 * altnCruiseDistance) / (altnTas - altnVw)) * 10) / 10;
 
+    console.log(altnCruiseFuel);
     return altnCruiseFuel;
   } else {
     const tripFuel = "!no power setting!";
@@ -374,21 +378,66 @@ function calculateAltnCruiseFuel (powerSetting, altnCruiseDistance, altnTas, alt
 
 function calculateAltnFuel (altnCruiseFuel, altnClimbFuel, altnDescentFuel) {
 
-  const altnFuel = altnCruiseFuel + altnClimbFuel + altnDescentFuel;
+  
+  const altnFuel = Math.round((altnCruiseFuel + altnClimbFuel + altnDescentFuel) * 10) / 10;
+  console.log(altnFuel);
   return altnFuel;
+  
 
 }
 
 function calculateTotalFuel (taxiFuelLiter, tripFuel, contingencyFuel, altnFuel, finResLiter, addFuelLiter, extraFuel) {
 
-  const totalFuel = taxiFuelLiter + tripFuel + contingencyFuel + altnFuel + finResLiter + addFuelLiter + extraFuel;
+  const totalFuel = Math.round((taxiFuelLiter + tripFuel + contingencyFuel + altnFuel + finResLiter + addFuelLiter + extraFuel) * 10) / 10;
 
   return totalFuel;
   
 }
 
   
+function loadResult() {
+  const fltomResult = localStorage.getItem('fltomResult');
+  document.getElementById('fltom-result').textContent = fltomResult || 'No data';
 
+  const pltomAeoResult = localStorage.getItem('pltomAeoResult');
+  document.getElementById('aeo-pltom-result').textContent = pltomAeoResult || 'No data';
+
+  const pltomOeiResult = localStorage.getItem('pltomOeiResult');
+  document.getElementById('oei-pltom-result').textContent = pltomOeiResult || 'No data';
+
+  const fllmResult = localStorage.getItem('fllmResult');
+  document.getElementById('fllm-result').textContent = fllmResult || 'No data';
+
+  const pllmAeoResult = localStorage.getItem('pllmAeoResult');
+  document.getElementById('aeo-pllm-result').textContent = pllmAeoResult || 'No data';
+
+  const pllmOeiResult = localStorage.getItem('pllmOeiResult');
+  document.getElementById('oei-pllm-result').textContent = pllmOeiResult || 'No data';
+}
+
+function calculateRtomResult (fltom, pltomAeo, pltomOei) {
+
+  const rtomResult = Math.min(fltom, pltomAeo, pltomOei);
+  return rtomResult;
+}
+
+function calculateRlmResult (fllm, pllmAeo, pllmOei) {
+
+  const rlmResult = Math.min(fllm, pllmAeo, pllmOei);
+  return rlmResult;
+}
+
+function calculateMatomResult (tripFuel, rlmResult, rtomResult) {
+  const rlmForTakeoff = Math.round(Math.min(rlmResult + tripFuel * 6 / 3.78, 3800));
+
+  const matomResult = Math.min (rtomResult, rlmForTakeoff, 3800);
+  return matomResult;
+}
+
+function calculateAtlResult(matomResult, totalFuel, taxiFuelLiter) {
+  const atlResult = Math.round(matomResult - totalFuel * 6 / 3.78 + taxiFuelLiter * 6 / 3.78 - 1300 * 2.205);
+  return atlResult;
+}
   
 
 function calculate () {
@@ -418,8 +467,13 @@ function calculate () {
   const altnAdOat = +document.getElementById("altnadoat").value;
   const altnVw = +document.getElementById("vw-altn").value;
   const altnTas = +document.getElementById("altn-tas").value;
+  const fltom = localStorage.getItem('fltomResult');
+  const pltomAeo = localStorage.getItem('pltomAeoResult');
+  const pltomOei = localStorage.getItem('pltomOeiResult');
+  const fllm = localStorage.getItem('fllmResult');
+  const pllmAeo = localStorage.getItem('pllmAeoResult');
+  const pllmOei = localStorage.getItem('pllmOeiResult');
 
-  
   
 
   const rawMap = calculateRawMap (powerSetting, rpmValue, altitudeValue);
@@ -443,7 +497,12 @@ function calculate () {
   const altnCruiseDistance = calculateAltnCruiseDistance (altnDistance, altnClimbDistance, altnDescentDistance);
   const altnCruiseFuel = calculateAltnCruiseFuel (powerSetting, altnCruiseDistance, altnTas, altnVw);
   const altnFuel = calculateAltnFuel (altnCruiseFuel, altnClimbFuel, altnDescentFuel);
-  const totalFuel = calculateTotalFuel (taxiFuelLiter, tripFuel, contingencyFuel, altnFuel, finResLiter, addFuelLiter, extraFuel)
+  const totalFuel = calculateTotalFuel (taxiFuelLiter, tripFuel, contingencyFuel, altnFuel, finResLiter, addFuelLiter, extraFuel);
+  const fltomResult = loadResult ();
+  const rtomResult = calculateRtomResult (fltom, pltomAeo, pltomOei);
+  const rlmResult = calculateRlmResult (fllm, pllmAeo, pllmOei);
+  const matomResult = calculateMatomResult (tripFuel, rlmResult, rtomResult);
+  const atlResult = calculateAtlResult (matomResult, totalFuel, taxiFuelLiter);
 
 
   const mapResultElement = document.getElementById("map");
@@ -461,6 +520,10 @@ function calculate () {
   const contingencyFuelResultElement = document.getElementById("cont-result");
   const altnFuelResultElement = document.getElementById("altn-result");
   const totalFuelResultElement = document.getElementById("total-result");
+  const rtomResultELement = document.getElementById("rtom-result");
+  const rlmResultElement = document.getElementById("rlm-result");
+  const matomResultElement = document.getElementById("matom-result");
+  const atlResultElement = document.getElementById("atl-result");
 
 
   mapResultElement.innerText = map;
@@ -478,6 +541,10 @@ function calculate () {
   contingencyFuelResultElement.innerText = contingencyFuel + " l";
   altnFuelResultElement.innerText = altnFuel + "l";
   totalFuelResultElement.innerText = totalFuel + " liter"; 
+  rtomResultELement.innerText = rtomResult;
+  rlmResultElement.innerText = rlmResult;
+  matomResultElement.innerText = matomResult;
+  atlResultElement.innerText = atlResult + " lbs";
 
   console.log (altnClimbFuel, altnDescentFuel, altnCruiseFuel, altnClimbDistance, altnDescentDistance, altnCruiseDistance);
 }

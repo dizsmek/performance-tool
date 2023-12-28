@@ -67,8 +67,7 @@ function calculateLDR(elevation, oat, lm, vw, contamination, slope) {
 
   const ldr = Math.round(((dlah + dlat + dlam + dlaw) * contamination * (1 + 0.05 * (slope * (-1))) / 3.28));
 
-  console.log(dlah + dlat + dlam);
-  console.log(dlaw);
+  
   return ldr;
 
   
@@ -89,6 +88,50 @@ function calculateRemainingStoppingDistance (ldr, lda) {
 function calculateLdaValue (lda) {
   const ldaValue = lda;
   return ldaValue;
+}
+
+function calculateRlmValue (factoredRunwayDistance,elevation, oat, vw, contamination, slope) {
+
+  const factoredRunwayDistance1 = (factoredRunwayDistance / (1 + 0.05 * slope * (-1))) * 3.28 / contamination;
+
+  if (vw === 0) {
+    dlaw = 0;
+  } else if (vw < 0) {
+    dlaw = vw * (0.0000165 * Math.pow((factoredRunwayDistance1), 2) - 0.077 * (factoredRunwayDistance1) + 31.98);
+  } else {
+    dlaw = vw * (0.00000051 * Math.pow((factoredRunwayDistance1), 2) - 0.0124 * (factoredRunwayDistance1) + 3.256);
+  }
+
+  const ldr1 = factoredRunwayDistance1 - dlaw;
+
+  const dlah = 0.0000019 * Math.pow(elevation, 2) + 0.0313 * elevation + 1380;
+
+  const dlat = (oat + 15) * (-0.000000045 * Math.pow(elevation, 2) + 0.000364 * elevation + 3.73);
+
+  const ldr2 = dlah + dlat;
+
+  const dlam = ldr1 - ldr2;
+
+  console.log(factoredRunwayDistance1, dlaw, ldr1, dlah, dlat, dlam);
+
+  if (dlam >= 0) {
+
+    const rlmValue = 3800;
+    return rlmValue;
+
+  } else {
+
+    const rlmValue = Math.round(3800 - (dlam / (-0.000238 * (dlah + dlat) + 0.0762)));
+    return rlmValue;
+
+  }
+
+}
+
+function saveResult(rlmValue) {
+  const fllmResult = rlmValue;
+  localStorage.setItem('fllmResult', fllmResult);
+  console.log(fllmResult);
 }
 
 
@@ -120,6 +163,10 @@ function calculate() {
   
   const ldaValue = calculateLdaValue (lda);
 
+  const rlmValue = calculateRlmValue (factoredRunwayDistance,elevation, oat, vw, contamination, slope);
+
+  const fllmResult = saveResult (rlmValue);
+
 
 
   const ldrResultElement = document.getElementById("ldr");
@@ -128,7 +175,9 @@ function calculate() {
 
   const remainingStoppingDistanceResultElement = document.getElementById("remaining-stopping-distance");
 
-  const ldaValueResultElement = document.getElementById("lda-value")
+  const ldaValueResultElement = document.getElementById("lda-value");
+
+  const rlmValueResultElement = document.getElementById("rlm");
 
 
 
@@ -136,5 +185,6 @@ function calculate() {
   factoredRunwayDistanceResultElement.innerText = factoredRunwayDistance + " m";
   remainingStoppingDistanceResultElement.innerText = remainingStoppingDistance + " m";
   ldaValueResultElement.innerText = ldaValue + " m";
+  rlmValueResultElement.innerText = rlmValue + " lbs";
 
 }

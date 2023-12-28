@@ -99,8 +99,8 @@ function calculateTODR(elevation, oat, tom, vw, contamination, slope) {
   return todr;
 }
 
-function calculateFactoredRunwayDistance(tora, toda, asda) {
-  if (tora === toda && toda === asda) {
+function calculateFactoredRunwayDistance(tora, toda) {
+  if (tora === toda) {
     return tora/1.25;
   }
 
@@ -153,9 +153,6 @@ function calculateRemainingStoppingDistance (asda, asdr) {
   return remainingStoppingDistance;
 }
 
-
-
-
 function calculateToraValue(tora) {
   const toraValue = tora;
   
@@ -174,6 +171,125 @@ function calculateClearwayValue (toda, tora) {
   return clearwayValue;
 }
 
+function calculatepltom1Value (asda, slope, contamination, vw, elevation, oat) {
+
+  const asda1 = (asda / (1 + 0.05 * slope)) * 3.28 / contamination;
+
+  let dasw;
+
+  if (vw === 0) {
+    dasw = 0;
+  } else if (vw < 0) {
+    dasw =
+      vw *
+      ( 0.00000026* Math.pow(asda1, 2) -
+        0.0433 * (asda1) -
+        12.61);
+  } else {
+    dasw =
+      vw *
+      (0.0000007 * Math.pow(asda1, 2) -
+        0.0141 * (asda1) -
+        6.35);
+  }
+
+  const asdr1 = asda1 - dasw;
+
+  const dash = 0.0000079 * Math.pow(elevation, 2) + 0.1856 * elevation + 1702;
+  const dast =(oat + 15) * (-0.00000014 * Math.pow(elevation, 2) + 0.00208 * elevation + 21.79);
+  
+  const asdr2 =  dash + dast;
+
+  const dasm = asdr1 - asdr2;
+  
+
+
+
+  if (dasm >= 0) {
+    const pltom1 = 3800;
+    return pltom1;
+    
+
+  } else {
+    const pltom1 = 3800 - (dasm / (-0.000000015 * Math.pow(dash + dast, 2) - 0.000579 * (dash + dast) + 0.253));
+    return pltom1;
+  }
+
+
+}
+
+
+
+function calculatepltom2Value (factoredRunwayDistance, slope, contamination, vw, elevation, oat) {
+  const factoredRunwayDistance1 = (factoredRunwayDistance / (1 + 0.05 * slope)) * 3.28 / contamination;
+
+  if (vw === 0) {
+    dtow = 0;
+  } else if (vw < 0) {
+    dtow =
+      vw *
+      (0.000004 * Math.pow(factoredRunwayDistance1, 2) -
+        0.0436 * (factoredRunwayDistance1) -
+        10.5);
+  } else {
+    dtow =
+      vw *
+      (0.00000033 * Math.pow(factoredRunwayDistance1, 2) -
+        0.008 * (factoredRunwayDistance1) -
+        10.667);
+  }
+
+  const todr1 = factoredRunwayDistance1 - dtow;
+
+  const dtoh = 0.0000125 * Math.pow(elevation, 2) + 0.155 * elevation + 1720;
+  const dtot =
+    (oat + 15) *
+    (0.0000002 * Math.pow(elevation, 2) + 0.00195 * elevation + 18);
+
+  const todr2 = dtoh + dtot;
+
+  const dtom = todr1 - todr2;
+
+  console.log(factoredRunwayDistance1, dtow, todr1, dtoh, dtot, todr2, dtom)
+
+  if (dtom >= 0) {
+    const pltom2 = 3800;
+    return pltom2;
+
+  } else if (dtom < 1450) {
+    const pltom2 = 3800 - ( dtom / (-0.00000017 * Math.pow(dtoh + dtot, 2) +
+    0.00017688 * (dtoh + dtot) -
+    1.49));
+    return pltom2;
+    
+  } else {
+    const pltom2 = 3350 - ((dtom - 450 *
+      (-0.00000017 * Math.pow(dtoh + dtot, 2) +
+        0.00017688 * (dtoh + dtot) -
+        1.49)) / (0.000000007 * Math.pow(dtoh + dtot, 2) -
+        0.000618 * (dtoh + dtot) +
+        0.0552));
+    return pltom2;
+  }
+
+
+}
+
+
+
+function calculateRtomValue (pltom1, pltom2) {
+  const rtomValue = Math.round(Math.max (pltom1, pltom2));
+  
+  return rtomValue;
+
+}
+
+function saveResult(rtomValue) {
+  const fltomResult = rtomValue;
+  localStorage.setItem('fltomResult', fltomResult);
+  console.log(fltomResult);
+}
+
 
 
 
@@ -188,6 +304,9 @@ function calculate() {
   const elevation = +document.getElementById("elevation").value;
   const tom = +document.getElementById("tom").value;
 
+  
+  
+
   if (contamination === "Dry") {
     contamination = 1;
   } else if (contamination === "Dry, grass") {
@@ -197,8 +316,6 @@ function calculate() {
   } else {
     contamination = 1;
   }
-
-
 
   const todr = calculateTODR(elevation, oat, tom, vw, contamination, slope);
   const factoredRunwayDistance = calculateFactoredRunwayDistance(
@@ -211,6 +328,10 @@ function calculate() {
   const toraValue = calculateToraValue (tora);
   const stopwayValue = calculateStopwayValue (asda, tora);
   const clearwayValue = calculateClearwayValue (toda, tora);
+  const pltom1 = calculatepltom1Value (asda, slope, contamination, vw, elevation, oat);
+  const pltom2 = calculatepltom2Value (factoredRunwayDistance, slope, contamination, vw, elevation, oat);
+  const rtomValue = calculateRtomValue (pltom1, pltom2);
+  const fltomResult = saveResult (rtomValue);
 
 
   const todrResultElement = document.getElementById("todr");
@@ -222,6 +343,7 @@ function calculate() {
   const toraValueResultElement = document.getElementById("tora-value");
   const stopwayValueResultElement = document.getElementById("stopway-value");
   const clearwayValueResultElement = document.getElementById("clearway-value");
+  const rtomValueResultElement = document.getElementById("rtom");
 
 
   todrResultElement.innerText = todr + " m";
@@ -231,9 +353,9 @@ function calculate() {
   toraValueResultElement.innerText = "TORA= " + toraValue + " m";
   stopwayValueResultElement.innerText = "SWY= " + stopwayValue + " m";
   clearwayValueResultElement.innerText = "CWY= " + clearwayValue + " m";
+  rtomValueResultElement.innerText = rtomValue + " lbs";
 
 
-  console.log(dasw);
 }
 
 

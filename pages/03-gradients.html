@@ -32,7 +32,7 @@
 
     <div class="notes">
       <p class="read-before-use">Read before use:</p>
-      <p class="instructions">The results are direct outputs of the charts included in the POH. Further factors to be applied according to EASA regulations have not been taken into account. </p>
+      <p class="instructions">The results are direct outputs of the charts included in the POH. Further factors to be applied according to EASA regulations have not been taken into account. For the AEO PLTOM the 77% factorisation is being implemented into the end result. For OEI limiting masses 1500 AAL elevation is being used.</p>
     </div>
 
     <div class="interface-gradients">
@@ -164,6 +164,14 @@
             </select>
           </div>
 
+          <div class="input-field">
+            <div>
+              <p class="input-label">AEO Gradient</p>
+            </div>
+            <input placeholder="4" id="aeo-to-gradient" class="text-input">
+            <p class="input-range">[%]</p>
+          </div>
+
           <div class="input-field-bottom">
             <div>
               <p class="input-label">TOM</p>
@@ -231,11 +239,30 @@
           </div>
         </div>
 
+        <div class="output">
+          <div class="result-label-area">
+            AEO PLTOM
+          </div>
+          <div class="result-label-area-right">
+            OEI PLTOM
+          </div>
+          
+          <div class="split-results">
+
+            <div class="result-left" id="aeo-pltom"></div>
+            
+            <div class="result-right" id="oei-pltom"></div>
+
+          </div>
+        </div>
+
+
+
       </div>
 
       <div class="cruise">
         
-        <div class="input">
+        <div class="input-cruise">
           <div class="label-area">
             Cruise
           </div>
@@ -439,6 +466,14 @@
             </select>
           </div>
 
+          <div class="input-field">
+            <div>
+              <p class="input-label">AEO Gradient</p>
+            </div>
+            <input placeholder="2.5" id="aeo-ldg-gradient" class="text-input">
+            <p class="input-range">[%]</p>
+          </div>
+
           <div class="input-field-bottom">
             <div>
               <p class="input-label">LM</p>
@@ -504,6 +539,23 @@
             <div class="result-left" id="oei-gear-up-ldg"></div>
             <div class="note">(88 KIAS)</div>
             <div class="result-right" id="oei-gear-up-ldg-roc"></div>
+
+          </div>
+        </div>
+
+        <div class="output">
+          <div class="result-label-area">
+            AEO PLLM
+          </div>
+          <div class="result-label-area-right">
+            OEI PLLM
+          </div>
+          
+          <div class="split-results">
+
+            <div class="result-left" id="aeo-pllm"></div>
+            
+            <div class="result-right" id="oei-pllm"></div>
 
           </div>
         </div>
